@@ -135,7 +135,7 @@
 
         // 画像をFirebase Storageにアップロードする関数
         function uploadImage(file) {
-            resizeAndCompressImage(file, 800, (blob) => {
+            resizeAndCompressImage(file, 400, (blob) => {
                 if (blob) {
                     const storageRef = ref(storage, 'images/' + file.name);
                     uploadBytes(storageRef, blob).then((snapshot) => {
