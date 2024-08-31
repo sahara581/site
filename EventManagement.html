@@ -77,7 +77,7 @@
                 querySnapshot.forEach((doc) => {
                     const event = doc.data();
                     const eventDiv = document.createElement("div");
-                    eventDiv.innerHTML = `<strong>${event.title}</strong><br>${event.details}<hr>`;
+                    eventDiv.innerHTML = `<h3>${event.title}</h3><p>${event.details}</p>`;
                     eventsList.appendChild(eventDiv);
                 });
             } catch (error) {
