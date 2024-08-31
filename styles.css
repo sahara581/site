@@ -137,14 +137,17 @@ nav ul li a:hover {
 }
 
 .gallery-container {
-    display: flex;
     overflow-x: auto; /* 横スクロールを有効にする */
-    padding: 10px 0; /* ギャラリー全体のパディング */
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .gallery-item {
-    display: inline-block; /* ギャラリーアイテムを横に並べる */
-    margin-right: 10px; /* 画像間のスペース */
+    margin: 10px;
+    flex: 0 0 auto;
 }
 
 .gallery-item img {
