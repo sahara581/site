@@ -16,37 +16,46 @@
     <br>
     <button type="submit">送信</button>
   </form>
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
-        import { getStorage, ref, uploadBytes } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js';
-        
-        // Firebaseの設定
-        const firebaseConfig = {
-            apiKey: "AIzaSyD2lwIPcq0uK3RIxMBPvGc0js_kgQwZwhI",
-            authDomain: "culturefestival-18f15.firebaseapp.com",
-            projectId: "culturefestival-18f15",
-            storageBucket: "culturefestival-18f15.appspot.com",
-            messagingSenderId: "871244616779",
-            appId: "1:871244616779:web:c4757bb5362694d52da9ce"
-        };
-        
-        // Firebaseの初期化
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        
-        // イベント情報の保存
-        async function saveEvent(title, details) {
-          try {
-            const docRef = await addDoc(collection(db, "events"), {
-              title: title,
-              details: details,
-              createdAt: Timestamp.fromDate(new Date())
-            });
-            console.log("ドキュメントが作成されました。ID: ", docRef.id);
-          } catch (e) {
-            console.error("ドキュメントの追加中にエラーが発生しました: ", e);
-          }
-        }
-    </script>
+  <script type="module">
+    // Firebaseのモジュールをインポート
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
+    import { getFirestore, collection, addDoc, Timestamp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js';
+
+    // Firebaseの設定
+    const firebaseConfig = {
+      apiKey: "AIzaSyD2lwIPcq0uK3RIxMBPvGc0js_kgQwZwhI",
+      authDomain: "culturefestival-18f15.firebaseapp.com",
+      projectId: "culturefestival-18f15",
+      storageBucket: "culturefestival-18f15.appspot.com",
+      messagingSenderId: "871244616779",
+      appId: "1:871244616779:web:c4757bb5362694d52da9ce"
+    };
+
+    // Firebaseの初期化
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // イベント情報の保存
+    async function saveEvent(title, details) {
+      try {
+        const docRef = await addDoc(collection(db, "events"), {
+          title: title,
+          details: details,
+          createdAt: Timestamp.fromDate(new Date())
+        });
+        console.log("ドキュメントが作成されました。ID: ", docRef.id);
+      } catch (e) {
+        console.error("ドキュメントの追加中にエラーが発生しました: ", e);
+      }
+    }
+
+    // フォームの送信イベントを処理
+    document.getElementById('eventForm').addEventListener('submit', (e) => {
+      e.preventDefault(); // フォームのデフォルト動作を無効にする
+      const title = document.getElementById('eventTitle').value;
+      const details = document.getElementById('eventDetails').value;
+      saveEvent(title, details);
+    });
+  </script>
 </body>
 </html>
