@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management</title>
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js"></script>
+    <script>
+        // Firebase設定オブジェクト（ご自身のFirebaseプロジェクトの設定を入れてください）
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Firebase初期化
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // ドキュメント参照
+        const eventsCollection = db.collection("events");
+
+        // イベントリストの取得と表示
+        function loadEvents() {
+            eventsCollection.get().then((querySnapshot) => {
+                const eventList = document.getElementById("eventList");
+                eventList.innerHTML = ""; // リストをクリア
+
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const eventElement = document.createElement("div");
+                    eventElement.innerHTML = `
+                        <h3>${data.title}</h3>
+                        <p>${data.details}</p>
+                        <button onclick="editEvent('${doc.id}')">Edit</button>
+                    `;
+                    eventList.appendChild(eventElement);
+                });
+            });
+        }
+
+        // イベント追加
+        function addEvent() {
+            const title = document.getElementById("title").value;
+            const details = document.getElementById("details").value;
+
+            eventsCollection.add({
+                title: title,
+                details: details
+            }).then(() => {
+                loadEvents();
+                document.getElementById("title").value = "";
+                document.getElementById("details").value = "";
+            });
+        }
+
+        // イベント編集
+        function editEvent(id) {
+            const title = prompt("Enter new title:");
+            const details = prompt("Enter new details:");
+
+            if (title && details) {
+                eventsCollection.doc(id).update({
+                    title: title,
+                    details: details
+                }).then(() => {
+                    loadEvents();
+                });
+            }
+        }
+
+        // ページロード時にイベントをロード
+        window.onload = loadEvents;
+    </script>
+</head>
+<body>
+    <h1>Event Management</h1>
+    <h2>Add Event</h2>
+    <form onsubmit="event.preventDefault(); addEvent();">
+        <label for="title">Title:</label>
+        <input type="text" id="title" required>
+        <br>
+        <label for="details">Details:</label>
+        <textarea id="details" required></textarea>
+        <br>
+        <button type="submit">Add Event</button>
+    </form>
+
+    <h2>Event List</h2>
+    <div id="eventList"></div>
+</body>
+</html>
