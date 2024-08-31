@@ -130,9 +130,7 @@ nav ul li a:hover {
 
 .gallery-container {
     display: flex;
-    flex-direction: row;
     overflow-x: auto; /* 横スクロールを有効にする */
-    white-space: nowrap; /* ギャラリーアイテムが横に並ぶようにする */
     padding: 10px; /* ギャラリー全体のパディング */
 }
 
