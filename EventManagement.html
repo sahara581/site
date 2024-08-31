@@ -1,61 +1,123 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>イベント管理</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イベント管理</title>
+    <style>
+        /* スタイルは必要に応じて追加してください */
+    </style>
 </head>
 <body>
-  <h1>イベント管理</h1>
-  <form id="eventForm">
-    <label for="eventTitle">イベントタイトル:</label>
-    <input type="text" id="eventTitle" name="eventTitle" required>
-    <br>
-    <label for="eventDetails">イベント詳細:</label>
-    <textarea id="eventDetails" name="eventDetails" required></textarea>
-    <br>
-    <button type="submit">送信</button>
-  </form>
-  <script type="module">
-    // Firebaseのモジュールをインポート
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
-    import { getFirestore, collection, addDoc, Timestamp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js';
+    <h1>イベント管理</h1>
 
-    // Firebaseの設定
-    const firebaseConfig = {
-      apiKey: "AIzaSyD2lwIPcq0uK3RIxMBPvGc0js_kgQwZwhI",
-      authDomain: "culturefestival-18f15.firebaseapp.com",
-      projectId: "culturefestival-18f15",
-      storageBucket: "culturefestival-18f15.appspot.com",
-      messagingSenderId: "871244616779",
-      appId: "1:871244616779:web:c4757bb5362694d52da9ce"
-    };
+    <!-- イベント情報表示セクション -->
+    <section id="event-list">
+        <h2>イベント一覧</h2>
+        <ul id="events">
+            <!-- JavaScriptでイベント情報がここに動的に追加されます -->
+        </ul>
+    </section>
 
-    // Firebaseの初期化
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    <!-- イベント追加・編集フォーム -->
+    <section id="event-form">
+        <h2 id="form-title">イベントを追加</h2>
+        <form id="form">
+            <input type="hidden" id="event-id" value=""> <!-- 編集時にイベントIDを隠しフィールドにセット -->
+            <label for="event-title">タイトル:</label>
+            <input type="text" id="event-title" required>
+            <label for="event-details">詳細:</label>
+            <textarea id="event-details" rows="4" required></textarea>
+            <button type="submit">保存</button>
+        </form>
+    </section>
 
-    // イベント情報の保存
-    async function saveEvent(title, details) {
-      try {
-        const docRef = await addDoc(collection(db, "events"), {
-          title: title,
-          details: details,
-          createdAt: Timestamp.fromDate(new Date())
+    <!-- Firebase SDKのインクルード -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+    <script>
+        // Firebaseの設定
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        // Firebase初期化
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // イベント情報を表示する関数
+        function displayEvents() {
+            const eventsList = document.getElementById('events');
+            eventsList.innerHTML = ''; // クリア
+            db.collection('events').get().then(snapshot => {
+                snapshot.forEach(doc => {
+                    const event = doc.data();
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <strong>${event.title}</strong><br>
+                        ${event.details}<br>
+                        <button onclick="editEvent('${doc.id}')">編集</button>
+                        <button onclick="deleteEvent('${doc.id}')">削除</button>
+                    `;
+                    eventsList.appendChild(li);
+                });
+            });
+        }
+
+        // イベントを追加・編集する関数
+        document.getElementById('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const id = document.getElementById('event-id').value;
+            const title = document.getElementById('event-title').value;
+            const details = document.getElementById('event-details').value;
+
+            if (id) {
+                // 編集
+                db.collection('events').doc(id).update({ title, details }).then(() => {
+                    displayEvents();
+                    resetForm();
+                });
+            } else {
+                // 追加
+                db.collection('events').add({ title, details }).then(() => {
+                    displayEvents();
+                    resetForm();
+                });
+            }
         });
-        console.log("ドキュメントが作成されました。ID: ", docRef.id);
-      } catch (e) {
-        console.error("ドキュメントの追加中にエラーが発生しました: ", e);
-      }
-    }
 
-    // フォームの送信イベントを処理
-    document.getElementById('eventForm').addEventListener('submit', (e) => {
-      e.preventDefault(); // フォームのデフォルト動作を無効にする
-      const title = document.getElementById('eventTitle').value;
-      const details = document.getElementById('eventDetails').value;
-      saveEvent(title, details);
-    });
-  </script>
+        // イベントを削除する関数
+        function deleteEvent(id) {
+            db.collection('events').doc(id).delete().then(() => {
+                displayEvents();
+            });
+        }
+
+        // イベントを編集する関数
+        function editEvent(id) {
+            db.collection('events').doc(id).get().then(doc => {
+                const event = doc.data();
+                document.getElementById('event-id').value = id;
+                document.getElementById('event-title').value = event.title;
+                document.getElementById('event-details').value = event.details;
+                document.getElementById('form-title').textContent = 'イベントを編集';
+            });
+        }
+
+        // フォームをリセットする関数
+        function resetForm() {
+            document.getElementById('event-id').value = '';
+            document.getElementById('event-title').value = '';
+            document.getElementById('event-details').value = '';
+            document.getElementById('form-title').textContent = 'イベントを追加';
+        }
+
+        // 初期表示
+        displayEvents();
+    </script>
 </body>
 </html>
