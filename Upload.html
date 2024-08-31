@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画像投稿</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            margin: 20px 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        #fileInput {
+            margin-bottom: 10px;
+        }
+        #uploadButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #uploadButton:hover {
+            background-color: #0056b3;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .gallery img {
+            max-width: 200px;
+            max-height: 200px;
+            object-fit: cover;
+        }
+        .gallery .image-container {
+            position: relative;
+        }
+        .gallery .delete-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 0 5px 0 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .gallery .delete-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>画像投稿ページ</h1>
+    <input type="file" id="fileInput" accept="image/*">
+    <button id="uploadButton">アップロード</button>
+    <div class="gallery" id="gallery"></div> <!-- ギャラリーを表示するエリア -->
+
+    <!-- モジュール形式でFirebase SDKを読み込む -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
+        import { getStorage, ref, uploadBytes, listAll, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js';
+
+        // Firebaseの設定
+        const firebaseConfig = {
+            apiKey: "AIzaSyD2lwIPcq0uK3RIxMBPvGc0js_kgQwZwhI",
+            authDomain: "culturefestival-18f15.firebaseapp.com",
+            projectId: "culturefestival-18f15",
+            storageBucket: "culturefestival-18f15.appspot.com",
+            messagingSenderId: "871244616779",
+            appId: "1:871244616779:web:c4757bb5362694d52da9ce"
+        };
+
+        // Firebaseを初期化
+        const app = initializeApp(firebaseConfig);
+        const storage = getStorage(app);
+        const gallery = document.getElementById('gallery');
+        const storageRef = ref(storage, 'images');
+
+        // 画像のリサイズと圧縮を行う関数
+        function resizeAndCompressImage(file, maxHeight, callback) {
+            const img = new Image();
+            const reader = new FileReader();
+            
+            reader.onload = function (e) {
+                img.src = e.target.result;
+            };
+
+            img.onload = function () {
+                // 高さがmaxHeight以下の場合はアップロードを中止
+                if (img.height <= maxHeight) {
+                    alert('画像の高さが十分ではありません。アップロードを中止します。');
+                    return;
+                }
+
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const scaleFactor = maxHeight / img.height;
+                
+                canvas.height = maxHeight;
+                canvas.width = img.width * scaleFactor;
+                
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                canvas.toBlob(function (blob) {
+                    callback(blob);
+                }, 'image/jpeg', 0.7); // 画像をJPEG形式で圧縮
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        // 画像をFirebase Storageにアップロードする関数
+        function uploadImage(file) {
+            resizeAndCompressImage(file, 800, (blob) => {
+                if (blob) {
+                    const storageRef = ref(storage, 'images/' + file.name);
+                    uploadBytes(storageRef, blob).then((snapshot) => {
+                        console.log('アップロード完了');
+                        loadImages(); // 画像がアップロードされた後にリストを更新
+                    }).catch((error) => {
+                        console.error('アップロードエラー:', error);
+                    });
+                }
+            });
+        }
+
+        // 画像をFirebase Storageから削除する関数
+        function deleteImage(imageRef) {
+            deleteObject(imageRef).then(() => {
+                console.log('画像が削除されました');
+                loadImages(); // 画像が削除された後にリストを更新
+            }).catch((error) => {
+                console.error('削除エラー:', error);
+            });
+        }
+
+        // 画像を読み込んで表示する関数
+        function loadImages() {
+            listAll(storageRef).then(result => {
+                gallery.innerHTML = ''; // ギャラリーをクリア
+                result.items.forEach(imageRef => {
+                    getDownloadURL(imageRef).then(url => {
+                        const imageContainer = document.createElement('div');
+                        imageContainer.className = 'image-container';
+
+                        const img = document.createElement('img');
+                        img.src = url;
+                        imageContainer.appendChild(img);
+
+                        const deleteButton = document.createElement('button');
+                        deleteButton.className = 'delete-button';
+                        deleteButton.textContent = '削除';
+                        deleteButton.onclick = () => deleteImage(imageRef); // 削除ボタンにイベントを設定
+
+                        imageContainer.appendChild(deleteButton);
+                        gallery.appendChild(imageContainer);
+                    }).catch(error => {
+                        console.error('エラー:', error);
+                    });
+                });
+            }).catch(error => {
+                console.error('エラー:', error);
+            });
+        }
+
+        // イベントリスナーの設定
+        document.getElementById('uploadButton').addEventListener('click', () => {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (file) {
+                uploadImage(file);
+            } else {
+                alert('ファイルを選択してください');
+            }
+        });
+
+        // 初回読み込みの実行
+        loadImages();
+    </script>
+</body>
+</html>
