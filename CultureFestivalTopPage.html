@@ -116,7 +116,7 @@
         // Firebaseを初期化
         const app = initializeApp(firebaseConfig);
         const storage = getStorage(app);
-        const gallery = document.getElementById('gallery');
+        const gallery = document.querySelector('.gallery');
         const storageRef = ref(storage, 'images');
 
         // 表示済み画像のURLを保持するセット
