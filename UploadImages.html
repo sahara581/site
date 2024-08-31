@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画像投稿</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            margin: 20px 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        #fileInput {
+            margin-bottom: 10px;
+        }
+        #uploadButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #uploadButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>画像投稿ページ</h1>
+    <input type="file" id="fileInput" accept="image/*">
+    <button id="uploadButton">アップロード</button>
+
+    <!-- モジュール形式でFirebase SDKを読み込む -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
+        import { getStorage, ref, uploadBytes } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js';
+
+        // Firebaseの設定
+        const firebaseConfig = {
+            apiKey: "AIzaSyD2lwIPcq0uK3RIxMBPvGc0js_kgQwZwhI",
+            authDomain: "culturefestival-18f15.firebaseapp.com",
+            projectId: "culturefestival-18f15",
+            storageBucket: "culturefestival-18f15.appspot.com",
+            messagingSenderId: "871244616779",
+            appId: "1:871244616779:web:c4757bb5362694d52da9ce"
+        };
+
+        // Firebaseを初期化
+        const app = initializeApp(firebaseConfig);
+        const storage = getStorage(app);
+
+        // 画像のリサイズと圧縮を行う関数
+        function resizeAndCompressImage(file, maxHeight, callback) {
+            const img = new Image();
+            const reader = new FileReader();
+            
+            reader.onload = function (e) {
+                img.src = e.target.result;
+            };
+
+            img.onload = function () {
+                // 高さがmaxHeight以下の場合はアップロードを中止
+                if (img.height <= maxHeight) {
+                    alert('画像の高さが十分ではありません。アップロードを中止します。');
+                    return;
+                }
+
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const scaleFactor = maxHeight / img.height;
+                
+                canvas.height = maxHeight;
+                canvas.width = img.width * scaleFactor;
+                
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                canvas.toBlob(function (blob) {
+                    callback(blob);
+                }, 'image/jpeg', 0.7); // 画像をJPEG形式で圧縮
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        document.getElementById('uploadButton').addEventListener('click', () => {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (file) {
+                resizeAndCompressImage(file, 800, (blob) => {
+                    if (blob) {
+                        const storageRef = ref(storage, 'images/' + file.name);
+                        
+                        // Firebaseにアップロード
+                        uploadBytes(storageRef, blob).then((snapshot) => {
+                            console.log('アップロード完了');
+                        }).catch((error) => {
+                            console.error('アップロードエラー:', error);
+                        });
+                    }
+                });
+            } else {
+                alert('ファイルを選択してください');
+            }
+        });
+    </script>
+</body>
+</html>

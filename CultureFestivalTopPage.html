@@ -1,0 +1,177 @@
+<!-- https://chatgpt.com/share/52d99360-e73a-43f0-9c15-1b469fe2b8ed -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文化祭</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="main-title">Unity</h1>
+            <h2 class="subtitle">文化祭 2024</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#events">イベント</a></li>
+                <li><a href="#gallery">フォトギャラリー</a></li>
+                <li><a href="#info">学校情報</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="events">
+        <h2>イベント情報</h2>
+        <div class="events-container">
+            <div class="event-item">
+                <h3>イベントタイトル 1</h3>
+                <p>イベント詳細情報 1</p>
+            </div>
+            <div class="event-item">
+                <h3>イベントタイトル 2</h3>
+                <p>イベント詳細情報 2</p>
+            </div>
+            <div class="event-item">
+                <h3>イベントタイトル 3</h3>
+                <p>イベント詳細情報 3</p>
+            </div>
+            <div class="event-item">
+                <h3>イベントタイトル 4</h3>
+                <p>イベント詳細情報 4</p>
+            </div>
+            <div class="event-item">
+                <h3>イベントタイトル 5</h3>
+                <p>イベント詳細情報 5</p>
+            </div>
+            <div class="event-item">
+                <h3>イベントタイトル 6</h3>
+                <p>イベント詳細情報 6</p>
+            </div>
+            <div class="event-item">
+                <h3>イベントタイトル 7</h3>
+                <p>イベント詳細情報<br>イベント詳細情報<br>イベント詳細情報<br>イベント詳細情報<br>イベント詳細情報<br>イベント詳細情報<br></p>
+            </div>
+            <!-- 他のイベントアイテムがここに追加されます -->
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>フォトギャラリー</h2>
+        <div class="gallery-container">
+            <div class="gallery">
+                <!-- ギャラリー画像がここに表示されます -->
+            </div>
+        </div>
+    </section>
+
+    <section id="info">
+        <h2>学校情報</h2>
+        <div class="school-info">
+            <p>学校名: 〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇</p>
+            <p>住所: 〇〇〇市〇　〇-〇-〇</p>
+            <p>電話: 〇〇〇〇-〇〇-〇〇〇〇<br>お問い合わせは平日8:30‒17:00にお願いいたします。</p>
+            <div id="map">
+                <!-- Google Mapの埋め込み -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2151.354643115252!2d139.53805556372177!3d35.707980246208514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018ef776c5f4e01%3A0xc8cdf1019d6b763f!2z44CSMTgwLTAwMjIg5p2x5Lqs6YO95q2m6JS16YeO5biC5aKD77yU5LiB55uu77yR77yT4oiS77yS77yYIOadseS6rOmDveeri-atpuiUtemrmOetieWtpuagoQ!5e0!3m2!1sja!2sjp!4v1725069248553!5m2!1sja!2sjp"
+                    width="600"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <div class="social-links">
+                <a href="#">学校公式ページ</a>
+                <a href="#" target="_blank" class="social-icon"> X（旧Twitter）</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 文化祭. All rights reserved.</p>
+    </footer>
+
+
+
+
+    <!-- モジュール形式でFirebase SDKを読み込む -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
+        import { getStorage, ref, listAll, getDownloadURL, getMetadata } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js';
+
+        // Firebaseの設定
+        const firebaseConfig = {
+            apiKey: "AIzaSyD2lwIPcq0uK3RIxMBPvGc0js_kgQwZwhI",
+            authDomain: "culturefestival-18f15.firebaseapp.com",
+            projectId: "culturefestival-18f15",
+            storageBucket: "culturefestival-18f15.appspot.com",
+            messagingSenderId: "871244616779",
+            appId: "1:871244616779:web:c4757bb5362694d52da9ce"
+        };
+
+        // Firebaseを初期化
+        const app = initializeApp(firebaseConfig);
+        const storage = getStorage(app);
+        const gallery = document.getElementById('gallery');
+        const storageRef = ref(storage, 'images');
+
+        // 表示済み画像のURLを保持するセット
+        const displayedImages = new Set();
+
+        // 画像を読み込んで表示する関数
+        const loadImages = async () => {
+            try {
+                const result = await listAll(storageRef);
+                const imagePromises = result.items.map(async (imageRef) => {
+                    try {
+                        const metadata = await getMetadata(imageRef);
+                        const url = await getDownloadURL(imageRef);
+                        // メタデータにtimestampがない場合はデフォルト値を設定
+                        const timestamp = metadata.customMetadata?.timestamp || '0';
+                        return { url, timestamp };
+                    } catch (error) {
+                        console.error('メタデータ取得エラー:', error);
+                        return null; // エラー時にはnullを返す
+                    }
+                });
+
+                const images = await Promise.all(imagePromises);
+                // nullを除外し、タイムスタンプでソート
+                const validImages = images.filter(image => image !== null);
+                validImages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+                // ギャラリーに画像を追加
+                validImages.forEach(image => {
+                    if (!displayedImages.has(image.url)) {
+                        const div = document.createElement('div');
+                        div.className = 'gallery-item';
+
+                        const img = document.createElement('img');
+                        img.src = image.url;
+                        img.alt = '画像';
+                        
+                        div.appendChild(img);
+                        gallery.appendChild(div);
+                        displayedImages.add(image.url);
+                    }
+                });
+            } catch (error) {
+                console.error('エラー:', error);
+            }
+        };
+
+        // 30秒ごとに画像を更新する
+        const updateImagesPeriodically = () => {
+            loadImages();
+            setInterval(loadImages, 30000); // 30秒ごとに更新
+        };
+
+        // 初回読み込みと定期更新の実行
+        updateImagesPeriodically();
+    </script>
+</body>
+</html>
