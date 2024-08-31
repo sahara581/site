@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +9,12 @@
     <script>
         // Firebase設定オブジェクト（ご自身のFirebaseプロジェクトの設定を入れてください）
         const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_SENDER_ID",
-            appId: "YOUR_APP_ID"
+            apiKey: "AIzaSyD2lwIPcq0uK3RIxMBPvGc0js_kgQwZwhI",
+            authDomain: "culturefestival-18f15.firebaseapp.com",
+            projectId: "culturefestival-18f15",
+            storageBucket: "culturefestival-18f15.appspot.com",
+            messagingSenderId: "871244616779",
+            appId: "1:871244616779:web:c4757bb5362694d52da9ce"
         };
 
         // Firebase初期化
@@ -81,13 +81,13 @@
     <h1>Event Management</h1>
     <h2>Add Event</h2>
     <form onsubmit="event.preventDefault(); addEvent();">
-        <label for="title">Title:</label>
+        <label for="title">タイトル</label>
         <input type="text" id="title" required>
         <br>
-        <label for="details">Details:</label>
+        <label for="details">詳細</label>
         <textarea id="details" required></textarea>
         <br>
-        <button type="submit">Add Event</button>
+        <button type="submit">保存</button>
     </form>
 
     <h2>Event List</h2>
