@@ -39,9 +39,14 @@
         }
         .gallery {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-wrap: nowrap; /* 横スクロールにするために nowrap を使用 */
+            overflow-x: auto; /* 横スクロールバーを表示 */
             gap: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 100%;
         }
         .gallery img {
             max-width: 200px;
@@ -50,6 +55,7 @@
         }
         .gallery .image-container {
             position: relative;
+            display: inline-block; /* 横並びにするために inline-block を使用 */
         }
         .gallery .delete-button {
             position: absolute;
