@@ -1,69 +1,52 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>イベント編集</title>
-
-    <script>
-        // Firebaseモジュールのインポート
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>イベント管理</title>
+</head>
+<body>
+  <h1>イベント管理</h1>
+  <form id="eventForm">
+    <label for="eventTitle">イベントタイトル:</label>
+    <input type="text" id="eventTitle" name="eventTitle" required>
+    <br>
+    <label for="eventDetails">イベント詳細:</label>
+    <textarea id="eventDetails" name="eventDetails" required></textarea>
+    <br>
+    <button type="submit">送信</button>
+  </form>
+    <script type="module">
+        import { initializeApp } from 'firebase/app';
+        import { getFirestore, collection, addDoc, Timestamp } from 'firebase/firestore';
         
-        // Firebaseの設定を入力
+        // Firebaseの設定
         const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID",
-            measurementId: "YOUR_MEASUREMENT_ID"
+            apiKey: "AIzaSyD2lwIPcq0uK3RIxMBPvGc0js_kgQwZwhI",
+            authDomain: "culturefestival-18f15.firebaseapp.com",
+            projectId: "culturefestival-18f15",
+            storageBucket: "culturefestival-18f15.appspot.com",
+            messagingSenderId: "871244616779",
+            appId: "1:871244616779:web:c4757bb5362694d52da9ce"
         };
         
         // Firebaseの初期化
         const app = initializeApp(firebaseConfig);
-        
-        // Firestoreのインスタンスを取得
         const db = getFirestore(app);
         
-        // フォームの送信処理
-        const eventForm = document.getElementById("eventForm");
-        eventForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
-        
-            const title = document.getElementById("eventTitle").value;
-            const details = document.getElementById("eventDetails").value;
-        
-            try {
-                await addDoc(collection(db, "events"), {
-                    title: title,
-                    details: details,
-                    createdAt: serverTimestamp()
-                });
-        
-                alert("イベントが保存されました。");
-                eventForm.reset();
-            } catch (error) {
-                console.error("Error adding document: ", error);
-                alert("エラーが発生しました。");
-            }
-        });
+        // イベント情報の保存
+        async function saveEvent(title, details) {
+          try {
+            const docRef = await addDoc(collection(db, "events"), {
+              title: title,
+              details: details,
+              createdAt: Timestamp.fromDate(new Date())
+            });
+            console.log("ドキュメントが作成されました。ID: ", docRef.id);
+          } catch (e) {
+            console.error("ドキュメントの追加中にエラーが発生しました: ", e);
+          }
+        }
     </script>
-</head>
-<body>
-    <h1>イベント編集ページ</h1>
-    <form id="eventForm">
-        <label for="eventTitle">タイトル:</label>
-        <input type="text" id="eventTitle" name="eventTitle"><br><br>
-
-        <label for="eventDetails">詳細:</label>
-        <textarea id="eventDetails" name="eventDetails"></textarea><br><br>
-
-        <button type="submit">保存</button>
-    </form>
-
-    <h2>イベント一覧</h2>
-    <div id="eventsList"></div>
 </body>
 </html>
