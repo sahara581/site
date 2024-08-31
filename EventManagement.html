@@ -3,11 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Management</title>
-    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js"></script>
+    <title>イベント編集</title>
+</head>
+<body>
+    <h1>イベント編集ページ</h1>
+    <form id="eventForm">
+        <label for="eventTitle">タイトル:</label>
+        <input type="text" id="eventTitle" name="eventTitle"><br><br>
+
+        <label for="eventDetails">詳細:</label>
+        <textarea id="eventDetails" name="eventDetails"></textarea><br><br>
+
+        <button type="submit">保存</button>
+    </form>
+
+    <h2>イベント一覧</h2>
+    <div id="eventsList"></div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+
     <script>
-        // Firebase設定オブジェクト（ご自身のFirebaseプロジェクトの設定を入れてください）
+        // Firebaseの設定を入力
         const firebaseConfig = {
             apiKey: "AIzaSyD2lwIPcq0uK3RIxMBPvGc0js_kgQwZwhI",
             authDomain: "culturefestival-18f15.firebaseapp.com",
@@ -17,80 +35,56 @@
             appId: "1:871244616779:web:c4757bb5362694d52da9ce"
         };
 
-        // Firebase初期化
+        // Firebaseの初期化
         firebase.initializeApp(firebaseConfig);
+
+        // Firestoreのインスタンスを取得
         const db = firebase.firestore();
 
-        // ドキュメント参照
-        const eventsCollection = db.collection("events");
+        // フォームの送信処理
+        const eventForm = document.getElementById("eventForm");
+        eventForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-        // イベントリストの取得と表示
-        function loadEvents() {
-            eventsCollection.get().then((querySnapshot) => {
-                const eventList = document.getElementById("eventList");
-                eventList.innerHTML = ""; // リストをクリア
+            const title = document.getElementById("eventTitle").value;
+            const details = document.getElementById("eventDetails").value;
 
-                querySnapshot.forEach((doc) => {
-                    const data = doc.data();
-                    const eventElement = document.createElement("div");
-                    eventElement.innerHTML = `
-                        <h3>${data.title}</h3>
-                        <p>${data.details}</p>
-                        <button onclick="editEvent('${doc.id}')">Edit</button>
-                    `;
-                    eventList.appendChild(eventElement);
-                });
-            });
-        }
-
-        // イベント追加
-        function addEvent() {
-            const title = document.getElementById("title").value;
-            const details = document.getElementById("details").value;
-
-            eventsCollection.add({
-                title: title,
-                details: details
-            }).then(() => {
-                loadEvents();
-                document.getElementById("title").value = "";
-                document.getElementById("details").value = "";
-            });
-        }
-
-        // イベント編集
-        function editEvent(id) {
-            const title = prompt("Enter new title:");
-            const details = prompt("Enter new details:");
-
-            if (title && details) {
-                eventsCollection.doc(id).update({
+            try {
+                await db.collection("events").add({
                     title: title,
-                    details: details
-                }).then(() => {
-                    loadEvents();
+                    details: details,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
+
+                alert("イベントが保存されました。");
+                eventForm.reset();
+                displayEvents();
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("エラーが発生しました。");
+            }
+        });
+
+        // イベントを表示する関数
+        async function displayEvents() {
+            const eventsList = document.getElementById("eventsList");
+            eventsList.innerHTML = ""; // 一旦クリア
+
+            try {
+                const snapshot = await db.collection("events").orderBy("createdAt", "desc").get();
+                snapshot.forEach((doc) => {
+                    const event = doc.data();
+                    const eventDiv = document.createElement("div");
+                    eventDiv.innerHTML = `<strong>${event.title}</strong><br>${event.details}<hr>`;
+                    eventsList.appendChild(eventDiv);
+                });
+            } catch (error) {
+                console.error("Error getting documents: ", error);
             }
         }
 
-        // ページロード時にイベントをロード
-        window.onload = loadEvents;
+        // 初期表示のイベントをロード
+        displayEvents();
     </script>
-</head>
-<body>
-    <h1>Event Management</h1>
-    <h2>Add Event</h2>
-    <form onsubmit="event.preventDefault(); addEvent();">
-        <label for="title">タイトル</label>
-        <input type="text" id="title" required>
-        <br>
-        <label for="details">詳細</label>
-        <textarea id="details" required></textarea>
-        <br>
-        <button type="submit">保存</button>
-    </form>
-
-    <h2>Event List</h2>
-    <div id="eventList"></div>
 </body>
 </html>
