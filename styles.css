@@ -84,6 +84,11 @@ nav ul li a:hover {
     text-decoration: underline; /* 下線を追加 */
 }
 
+/* 概要セクション */
+#overview {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 /* イベントセクション */
 #events {
     padding: 40px 20px;
