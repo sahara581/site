@@ -131,7 +131,8 @@ nav ul li a:hover {
 .gallery-container {
     display: flex;
     overflow-x: auto; /* 横スクロールを有効にする */
-    padding: 10px; /* ギャラリー全体のパディング */
+    gap: 20px; /* イベントアイテム間の間隔 */
+    padding: 10px 0; /* ギャラリー全体のパディング */
 }
 
 .gallery-item {
