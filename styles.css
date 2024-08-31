@@ -139,7 +139,6 @@ nav ul li a:hover {
 .gallery-container {
     display: flex;
     overflow-x: auto; /* 横スクロールを有効にする */
-    gap: 20px; /* イベントアイテム間の間隔 */
     padding: 10px 0; /* ギャラリー全体のパディング */
 }
 
@@ -151,7 +150,7 @@ nav ul li a:hover {
 .gallery-item img {
     height: 400px; /* 高さを指定し、幅を自動調整 */
     object-fit: cover; /* 高さに合わせて幅を調整し、画像が切り取られるのを防ぐ */
-    display: block; /* 画像をブロック要素として表示 */
+    /* display: block; 画像をブロック要素として表示 */
 }
 
 /* 学校情報セクション */
