@@ -120,6 +120,14 @@ nav ul li a:hover {
 }
 
 /* フォトギャラリー */
+#gallery {
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, 0.1); /* 他のセクションと同じ背景色 */
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 100%;
+}
+
 .gallery-container {
     display: flex;
     flex-direction: row;
