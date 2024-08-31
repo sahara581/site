@@ -17,8 +17,8 @@
     <button type="submit">送信</button>
   </form>
     <script type="module">
-        import { initializeApp } from 'firebase/app';
-        import { getFirestore, collection, addDoc, Timestamp } from 'firebase/firestore';
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
+        import { getStorage, ref, uploadBytes } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js';
         
         // Firebaseの設定
         const firebaseConfig = {
