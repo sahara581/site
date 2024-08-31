@@ -1,0 +1,8 @@
+<section id="upload">
+    <h2>画像アップロード</h2>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" id="image-file" name="image-file" accept="image/*" required>
+        <input type="text" id="image-title" name="image-title" placeholder="画像のタイトル" required>
+        <button type="submit">アップロード</button>
+    </form>
+</section>
