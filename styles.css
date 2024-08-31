@@ -130,7 +130,7 @@ nav ul li a:hover {
 /* フォトギャラリー */
 #gallery {
     padding: 20px;
-    background-color: #082752; /* 濃い寒色 */
+    background-color: rgba(0, 0, 0, 0.1); /* 濃い寒色 */
     max-width: 100%; /* 横方向にスクロールするため、幅は100% */
 }
 
