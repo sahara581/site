@@ -32,10 +32,12 @@
         </form>
     </section>
 
-    <!-- Firebase SDKのインクルード -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
-    <script>
+    <!-- モジュールを読み込む -->
+    <script type="module">
+        // Firebaseの設定と初期化
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
+        import { getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js';
+
         // Firebaseの設定
         const firebaseConfig = {
             apiKey: "YOUR_API_KEY",
@@ -45,31 +47,33 @@
             messagingSenderId: "YOUR_SENDER_ID",
             appId: "YOUR_APP_ID"
         };
+
         // Firebase初期化
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
         // イベント情報を表示する関数
-        function displayEvents() {
+        async function displayEvents() {
             const eventsList = document.getElementById('events');
             eventsList.innerHTML = ''; // クリア
-            db.collection('events').get().then(snapshot => {
-                snapshot.forEach(doc => {
-                    const event = doc.data();
-                    const li = document.createElement('li');
-                    li.innerHTML = `
-                        <strong>${event.title}</strong><br>
-                        ${event.details}<br>
-                        <button onclick="editEvent('${doc.id}')">編集</button>
-                        <button onclick="deleteEvent('${doc.id}')">削除</button>
-                    `;
-                    eventsList.appendChild(li);
-                });
+
+            const eventsCollection = collection(db, 'events');
+            const eventSnapshot = await getDocs(eventsCollection);
+            eventSnapshot.forEach((doc) => {
+                const event = doc.data();
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <strong>${event.title}</strong><br>
+                    ${event.details}<br>
+                    <button onclick="editEvent('${doc.id}')">編集</button>
+                    <button onclick="deleteEvent('${doc.id}')">削除</button>
+                `;
+                eventsList.appendChild(li);
             });
         }
 
         // イベントを追加・編集する関数
-        document.getElementById('form').addEventListener('submit', function(event) {
+        document.getElementById('form').addEventListener('submit', async function(event) {
             event.preventDefault();
             const id = document.getElementById('event-id').value;
             const title = document.getElementById('event-title').value;
@@ -77,35 +81,33 @@
 
             if (id) {
                 // 編集
-                db.collection('events').doc(id).update({ title, details }).then(() => {
-                    displayEvents();
-                    resetForm();
-                });
+                const eventDoc = doc(db, 'events', id);
+                await updateDoc(eventDoc, { title, details });
+                displayEvents();
+                resetForm();
             } else {
                 // 追加
-                db.collection('events').add({ title, details }).then(() => {
-                    displayEvents();
-                    resetForm();
-                });
+                await addDoc(collection(db, 'events'), { title, details });
+                displayEvents();
+                resetForm();
             }
         });
 
         // イベントを削除する関数
-        function deleteEvent(id) {
-            db.collection('events').doc(id).delete().then(() => {
-                displayEvents();
-            });
+        async function deleteEvent(id) {
+            const eventDoc = doc(db, 'events', id);
+            await deleteDoc(eventDoc);
+            displayEvents();
         }
 
         // イベントを編集する関数
-        function editEvent(id) {
-            db.collection('events').doc(id).get().then(doc => {
-                const event = doc.data();
-                document.getElementById('event-id').value = id;
-                document.getElementById('event-title').value = event.title;
-                document.getElementById('event-details').value = event.details;
-                document.getElementById('form-title').textContent = 'イベントを編集';
-            });
+        async function editEvent(id) {
+            const eventDoc = doc(db, 'events', id);
+            const event = (await getDoc(eventDoc)).data();
+            document.getElementById('event-id').value = id;
+            document.getElementById('event-title').value = event.title;
+            document.getElementById('event-details').value = event.details;
+            document.getElementById('form-title').textContent = 'イベントを編集';
         }
 
         // フォームをリセットする関数
