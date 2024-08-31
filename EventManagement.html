@@ -4,6 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>イベント編集</title>
+
+    <script>
+        // Firebaseモジュールのインポート
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+        
+        // Firebaseの設定を入力
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID",
+            measurementId: "YOUR_MEASUREMENT_ID"
+        };
+        
+        // Firebaseの初期化
+        const app = initializeApp(firebaseConfig);
+        
+        // Firestoreのインスタンスを取得
+        const db = getFirestore(app);
+        
+        // フォームの送信処理
+        const eventForm = document.getElementById("eventForm");
+        eventForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+        
+            const title = document.getElementById("eventTitle").value;
+            const details = document.getElementById("eventDetails").value;
+        
+            try {
+                await addDoc(collection(db, "events"), {
+                    title: title,
+                    details: details,
+                    createdAt: serverTimestamp()
+                });
+        
+                alert("イベントが保存されました。");
+                eventForm.reset();
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("エラーが発生しました。");
+            }
+        });
+    </script>
 </head>
 <body>
     <h1>イベント編集ページ</h1>
@@ -19,74 +65,5 @@
 
     <h2>イベント一覧</h2>
     <div id="eventsList"></div>
-
-    <!-- ESモジュールとして扱うために type="module" を追加 -->
-    <script type="module">
-        // Firebaseモジュールのインポート
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, orderBy, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
-
-        // Firebaseの設定を入力
-        const firebaseConfig = {
-            apiKey: "AIzaSyD2lwIPcq0uK3RIxMBPvGc0js_kgQwZwhI",
-            authDomain: "culturefestival-18f15.firebaseapp.com",
-            projectId: "culturefestival-18f15",
-            storageBucket: "culturefestival-18f15.appspot.com",
-            messagingSenderId: "871244616779",
-            appId: "1:871244616779:web:c4757bb5362694d52da9ce"
-        };
-
-        // Firebaseの初期化
-        const app = initializeApp(firebaseConfig);
-
-        // Firestoreのインスタンスを取得
-        const db = getFirestore(app);
-
-        // フォームの送信処理
-        const eventForm = document.getElementById("eventForm");
-        eventForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
-
-            const title = document.getElementById("eventTitle").value;
-            const details = document.getElementById("eventDetails").value;
-
-            try {
-                await addDoc(collection(db, "events"), {
-                    title: title,
-                    details: details,
-                    createdAt: serverTimestamp()
-                });
-
-                alert("イベントが保存されました。");
-                eventForm.reset();
-                displayEvents();
-            } catch (error) {
-                console.error("Error adding document: ", error);
-                alert("エラーが発生しました。");
-            }
-        });
-
-        // イベントを表示する関数
-        async function displayEvents() {
-            const eventsList = document.getElementById("eventsList");
-            eventsList.innerHTML = ""; // 一旦クリア
-
-            try {
-                const q = query(collection(db, "events"), orderBy("createdAt", "desc"));
-                const querySnapshot = await getDocs(q);
-                querySnapshot.forEach((doc) => {
-                    const event = doc.data();
-                    const eventDiv = document.createElement("div");
-                    eventDiv.innerHTML = `<h3>${event.title}</h3><p>${event.details}</p>`;
-                    eventsList.appendChild(eventDiv);
-                });
-            } catch (error) {
-                console.error("Error getting documents: ", error);
-            }
-        }
-
-        // 初期表示のイベントをロード
-        displayEvents();
-    </script>
 </body>
 </html>
