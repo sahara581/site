@@ -131,6 +131,7 @@ nav ul li a:hover {
 #gallery {
     padding: 20px;
     background-color: #082752; /* 濃い寒色 */
+    max-width: 100%; /* 横方向にスクロールするため、幅は100% */
 }
 
 .gallery-container {
