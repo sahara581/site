@@ -1,217 +1,232 @@
-/* 全体のリセット */
-body, h1, h2, p, ul, li {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* 全体レイアウト */
+/* 全体のスタイル */
 body {
-    font-family: Arial, sans-serif;
-    color: #fff;
-    background-color: #082752; /* 濃い寒色の背景 */
-    text-align: center; /* コンテンツを中央寄せ */
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* ヘッダー */
-header {
-    background-image: url('https://cdn.pixabay.com/photo/2024/03/04/16/44/branches-8612695_1280.jpg'); /* 背景画像を設定 */
-    background-size: cover; /* 画像がヘッダー全体をカバーするようにする */
-    background-position: center; /* 画像の位置を中央に設定 */
-    background-color: rgba(0, 0, 0, 0.5); /* 背景画像が見やすくなるようにオーバーレイを追加 */
-    padding: 20px;
-    height: 30vh; /* ビューポートの高さ全体を使用 */
-    color: #fff;
-    overflow: hidden; /* ヘッダー内の要素がはみ出さないようにする */
-    display: flex; /* フレックスボックスで内容を中央寄せ */
-    align-items: center; /* 垂直方向に中央寄せ */
-    justify-content: center; /* 水平方向に中央寄せ */
-    text-align: center; /* テキストを中央寄せ */
-    position: relative; /* ナビゲーションの位置を相対基準にする */
-}
-
-/* メインタイトル */
-.main-title {
-    font-size: 4em; /* サブタイトルより大きくする */
+    font-family: 'Arial',YuGothic,'Yu Gothic',sans-serif;
     margin: 0;
-    font-weight: bold; /* 太字にする */
-}
-
-/* サブタイトル */
-.subtitle {
-    font-size: 2.5em; /* サブタイトルのサイズ */
-    margin: 10px 0 0 0;
-}
-
-/* ナビゲーションバー */
-nav {
-    position: fixed; /* スクロールに合わせてナビゲーションを固定 */
-    bottom: 0; /* 画面の下部に配置 */
-    left: 50%; /* 横方向に画面の中央に配置 */
-    transform: translateX(-50%); /* 自身の中心に合わせるための調整 */
-    width: 100%; /* 横幅を画面全体に合わせる */
-    background-color: rgba(0, 0, 0, 0.7); /* 半透明の背景色 */
-    padding: 10px 0;
-    color: #fff;
-    text-align: center;
-    z-index: 1000; /* 他のコンテンツよりも前面に表示 */
-}
-
-/* ナビゲーションリンク */
-nav ul {
-    list-style: none;
     padding: 0;
-    margin: 0;
+    background-color: #f4f4f4;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #00aaff; /* 明るい青のリンク色 */
-    text-decoration: none;
-    font-size: 1.2em;
-}
-
-nav ul li a:hover {
-    color: #ffcc00; /* ホバー時に黄色に変わる */
-    text-decoration: underline; /* 下線を追加 */
-}
-
-/* 概要セクション */
-#overview {
-    padding: 40px 20px;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin: 20px auto;
-}
-
-/* イベントセクション */
-#events {
-    padding: 40px 20px;
-    background-color: rgba(0, 0, 0, 0.1); /* 背景に軽い寒色を使用 */
-    border-radius: 8px;
-    margin: 20px auto;
-    max-width: 100%; /* 横方向にスクロールするため、幅は100% */
-}
-
-.events-container {
-    display: flex;
-    overflow-x: auto; /* 横方向のスクロールを許可 */
-    gap: 20px; /* イベントアイテム間の間隔 */
+h1 {
+    text-align: center;
+    background-color: #007BFF; /* 国連ブルー */
+    color: white;
     padding: 10px 0;
 }
 
-.event-item {
-    background-color: #fff;
-    color: #333;
-    padding: 15px;
-    border-radius: 8px;
-    flex: 0 0 auto; /* アイテムの幅を自動調整し、アイテム間のスペースを維持 */
-    max-width: 300px; /* アイテムの最大幅 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 軽いシャドウ */
-}
-
-.event-item h3 {
-    margin: 0;
-    font-size: 1.5em;
-}
-
-.event-item p {
-    margin: 5px 0;
-}
-
-/* フォトギャラリー */
-#gallery {
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.1); /* 濃い寒色 */
-    max-width: 100%; /* 横方向にスクロールするため、幅は100% */
-}
-
-.gallery-container {
-    overflow-x: auto; /* 横スクロールを有効にする */
-}
-
-.gallery {
-    display: flex;
-    flex-wrap: nowrap;
-}
-
-.gallery-item {
-    margin: 10px;
-    flex: 0 0 auto;
-}
-
-.gallery-item img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* 学校情報セクション */
-#info {
-    padding: 40px 20px;
-    background-color: rgba(0, 0, 0, 0.1); /* 背景に軽い寒色を使用 */
-    border-radius: 8px;
+/* セクション全般 */
+section {
     margin: 20px auto;
-    max-width: 800px; /* コンテンツ幅を制限 */
-}
-
-#map iframe {
-    width: 100%;
-    height: 300px;
-    border: 0;
+    padding: 20px;
+    max-width: 800px;
+    background-color: white;
     border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.school-info a {
-    color: #00aaff; /* 明るい青のリンク色 */
-    text-decoration: none;
+/* 発表者登録エリア */
+#presenter-registration form {
+    display: flex;
+    gap: 10px;
 }
 
-.school-info a:hover {
-    color: #ffcc00; /* ホバー時に黄色に変わる */
-    text-decoration: underline; /* 下線を追加 */
+#presenter-registration input {
+    flex: 1;
+    padding: 10px;
 }
 
+#presenter-registration button {
+    padding: 10px 20px;
+}
 
-.social-links a {
+#add-presenter-btn {
+    background-color: #007BFF; /* タイトルの背景色と同じ */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+#add-presenter-btn:hover{
+    background-color: #000000;
+}
+
+/* 発表者のバツボタン */
+.presenter-item {
     display: inline-block;
-    margin: 0 15px;
-    color: #00aaff; /* 明るい青のリンク色 */
-    text-decoration: none;
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #e9ecef;
+    border-radius: 4px;
 }
 
-.social-links a:hover {
-    color: #ffcc00; /* ホバー時に黄色に変わる */
-    text-decoration: underline; /* 下線を追加 */
+.presenter-item .delete-btn {
+    color: red;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: .4s;
+    margin: 0px 0px 0px 10px;
+}
+
+.presenter-item .delete-btn:hover{
+    background-color: #000000;
+}
+
+/* 原稿入力エリア */
+#draft-editor form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#draft-editor input,
+#draft-editor textarea {
+    padding: 10px;
+}
+
+#save-draft-btn {
+    background-color: #007BFF; /* タイトルの背景色と同じ */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+#save-draft-btn:hover {
+    background-color: #000000;
+}
+
+/* データ管理セクション */
+#save-json-btn {
+    background-color: #007BFF; /* タイトルの背景色と同じ */
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#load-json-file {
+    background-color: #007BFF; /* タイトルの背景色と同じ */
+    color: white;
+    padding: 7px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#load-json-btn {
+    background-color: #007BFF; /* タイトルの背景色と同じ */
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 
-/* フッター */
-footer {
-    padding: 20px; /* 内側の余白を設定 */
-    background-color: #082752; /* フッターの背景色 */
-    color: #fff; /* フッターの文字色 */
-    margin-top: 20px; /* 上部の余白を追加 */
-    position: relative; /* スクロール時にフッターが固定されないようにする */
-    z-index: 1000; /* 他のコンテンツよりも前面に表示 */
-    clear: both; /* 他のフロート要素がある場合、フッターがその下に表示されるようにする */
+/* 各セクション */
+#sections-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-/* フッター内リンク */
-footer a {
-    color: #00aaff; /* 明るい青のリンク色 */
-    text-decoration: none;
+.section-item {
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: grab; /* ドラッグ可能なカーソル */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-footer a:hover {
-    color: #ffcc00; /* ホバー時に黄色に変わる */
-    text-decoration: underline; /* 下線を追加 */
+.section-item-title {
+    color: black;
+    font-size: 20px;
+}
+
+.section-item-presenter {
+    color: black;
+    font-style: oblique;
+}
+
+.section-item-contents {
+    overflow-wrap: break-word; /* 長い単語やURLの自動改行 */
+}
+
+/* ドラッグ中のスタイル */
+.section-item.dragging {
+    opacity: 0.1;
+    cursor: grabbing; /* ドラッグ中のカーソル */
+}
+
+/* ドラッグ可能なエリアの限定 */
+.section-item > * {
+    cursor: default; /* 文字選択のカーソル */
+    user-select: none; /* 文字選択を防ぐ */
+}
+
+/* セクションのボタン */
+.section-item .edit-btn,
+.section-item .delete-btn {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    transition: .4s;
+}
+
+.section-item .edit-btn:hover,
+.section-item .delete-btn:hover {
+    background-color: #000000;
+    color: red;
+}
+
+.section-item .edit-btn {
+    background-color: orange;
+}
+
+.section-item .delete-btn {
+    background-color: red;
+}
+
+/* プルダウンメニュー */
+.section-item .presenter-select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+@media print {
+    button {
+        display: none;
+    }
+    input {
+        display: none;
+    }
+    h1 {
+        display: none;
+    }
+    h2 {
+        display: none;
+    }
+    select {
+        display: none;
+    }
+    #draft-editor {
+        display: none;
+    }
+    #presenter-registration {
+        display: none;
+    }
 }

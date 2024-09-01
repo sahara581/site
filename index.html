@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>発表原稿エディター</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!--
+    <div class="toolbar">
+        <button onclick="formatText('bold')">B</button>
+        <button onclick="formatText('italic')">I</button>
+        <button onclick="formatText('underline')">U</button>
+        <input type="color" id="fontColor" onchange="changeColor(this.value)">
+        <button onclick="saveContent()">保存</button>
+        <button onclick="clearContent()">クリア</button>
+    </div>
+-->
+
+
+    <h1>発表原稿エディター</h1>
+
+    <section id="presenter-registration">
+        <h2>発表者登録</h2>
+        <form>
+            <input type="text" id="presenter-name" placeholder="発表者名を入力">
+            <button type="button" id="add-presenter-btn">追加</button>
+        </form>
+        <div id="presenter-list"></div>
+    </section>
+
+    <section id="draft-editor">
+        <h2>原稿入力</h2>
+        <form>
+            <input type="text" id="section-title" placeholder="セクションタイトル">
+            <textarea id="section-content" placeholder="セクション内容"></textarea>
+            <button type="button" id="save-draft-btn">保存</button>
+        </form>
+    </section>
+
+<!--
+    <section id="data-management">
+        <h2>データ管理</h2>
+        <button id="save-json-btn">データをJSONファイルとして保存</button>
+        <input type="file" id="load-json-file" accept=".json">
+        <button id="load-json-btn">JSONファイルを読み込む</button>
+    </section>
+-->
+
+
+    <section id="sections-list">
+        <h2>セクション一覧</h2>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
