@@ -30,6 +30,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // JSONエクスポート機能の追加
+    const exportButton = document.getElementById('export-json-btn');
+    exportButton.addEventListener('click', () => {
+        const data = {
+            presenters: JSON.parse(localStorage.getItem('presenters')) || [],
+            sections: JSON.parse(localStorage.getItem('sections')) || []
+        };
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'data.json';
+        a.click();
+        URL.revokeObjectURL(url);
+    });
+
+    // JSONインポート機能の追加
+    const importButton = document.getElementById('import-json-btn');
+    importButton.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const data = JSON.parse(e.target.result);
+                localStorage.setItem('presenters', JSON.stringify(data.presenters));
+                localStorage.setItem('sections', JSON.stringify(data.sections));
+                presenterList.innerHTML = '';
+                sectionsList.innerHTML = '';
+                loadPresenters();
+                loadSections();
+            };
+            reader.readAsText(file);
+        }
+    });
+
     function addPresenter(name) {
         const presenterItem = document.createElement('div');
         presenterItem.className = 'presenter-item';
@@ -82,14 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sectionItem.addEventListener('dragend', () => {
             sectionItem.classList.remove('dragging');
-        });
-
-        // プルダウンメニューで発表者が変更された時に保存
-        const presenterSelect = sectionItem.querySelector('.presenter-select');
-        presenterSelect.value = presenter; // 初期選択
-        presenterSelect.addEventListener('change', () => {
-            sectionItem.querySelector('.section-item-presenter').textContent = presenterSelect.value;
-            saveSections();
         });
     }
 
