@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const presenterInput = document.getElementById('presenter-name');
     const presenterList = document.getElementById('presenter-list');
     const sectionsList = document.getElementById('sections-list');
+    let editingIndex = null;  // 編集中のセクションのインデックスを保持
 
     loadPresenters();
     loadSections();
@@ -22,11 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const content = document.getElementById('section-content').value.trim();
         const presenterSelect = document.querySelector('.presenter-select');
         const presenter = presenterSelect ? presenterSelect.value : '';
+
         if (title && content) {
-            addSection(title, content, presenter);
+            if (editingIndex !== null) {
+                // 編集モードの場合
+                updateSection(editingIndex, title, content, presenter);
+            } else {
+                // 新規作成モードの場合
+                addSection(title, content, presenter);
+            }
             saveSections();
             document.getElementById('section-title').value = '';
             document.getElementById('section-content').value = '';
+            editingIndex = null; // 編集モード解除
         }
     });
 
@@ -120,6 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function updateSection(index, title, content, presenter) {
+        const sectionItems = sectionsList.querySelectorAll('.section-item');
+        const sectionItem = sectionItems[index];
+        sectionItem.querySelector('.section-item-title').textContent = title;
+        sectionItem.querySelector('.section-item-contents').innerHTML = convertNewlinesToBr(content);
+        sectionItem.querySelector('.section-item-presenter').textContent = presenter;
+        sectionItem.querySelector('.presenter-select').value = presenter;
+    }
+
     function convertNewlinesToBr(text) {
         return text.replace(/\n/g, '<br>');
     }
@@ -188,11 +206,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.editSection = function (button) {
         const sectionItem = button.parentElement;
+        const sectionItems = Array.from(sectionsList.querySelectorAll('.section-item'));
+        editingIndex = sectionItems.indexOf(sectionItem);  // 編集するセクションのインデックスを取得
         const title = sectionItem.querySelector('strong').textContent;
         const content = sectionItem.querySelector('p').innerHTML;
         document.getElementById('section-title').value = title;
         document.getElementById('section-content').value = content.replace(/<br>/g, '\n'); // <br>を改行文字に戻す
-        sectionItem.remove();
-        saveSections();
     }
 });
