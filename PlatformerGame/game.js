@@ -32,7 +32,7 @@ const coinDistance = 50; // コイン間隔
 const minObstacleGap = 500; // 障害物間の最小間隔
 let frameCount = 0;
 let isGameOver = false;
-let startTime = Date.now();
+let distanceTraveled = 0; // 距離（スコアとして使用）
 let coinCount = 0; // 取得したコインの数
 
 function update() {
@@ -55,6 +55,9 @@ function update() {
         player.velocityY = 0;
         player.jumpCount = 0; // 地面に着地したらジャンプ回数をリセット
     }
+
+    // プレイヤーの移動距離をスコアとして加算
+    distanceTraveled += player.speed;
 
     // 障害物生成
     if (frameCount % obstacleFrequency === 0) {
@@ -175,18 +178,18 @@ function draw() {
         ctx.fillRect(coin.x, coin.y, coin.width, coin.height);
     });
 
-    // スコアの描画
-    const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+    // スコアの描画 (距離)
+    const distanceScore = Math.floor(distanceTraveled);
     ctx.fillStyle = 'black';
     ctx.font = '24px Arial';
-    ctx.fillText(`Score: ${elapsedTime}秒`, 10, 30);
+    ctx.fillText(`Distance: ${distanceScore}m`, 10, 30);
     ctx.fillText(`Coins: ${coinCount}`, 10, 60); // コイン数の表示
 }
 
 function gameOver() {
     isGameOver = true;
-    const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-    if (confirm(`ゲームオーバー！ スコア: ${elapsedTime}秒、コイン数: ${coinCount}。もう一度プレイしますか？`)) {
+    const distanceScore = Math.floor(distanceTraveled);
+    if (confirm(`ゲームオーバー！ 距離: ${distanceScore}m、コイン数: ${coinCount}。もう一度プレイしますか？`)) {
         resetGame();
     }
 }
@@ -204,7 +207,7 @@ function resetGame() {
     coins = [];
     frameCount = 0;
     isGameOver = false;
-    startTime = Date.now();
+    distanceTraveled = 0; // 距離のリセット
     coinCount = 0;
 }
 
