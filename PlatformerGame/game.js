@@ -217,7 +217,7 @@ function handleInput(x) {
     if (x < halfWidth) {
         player.isJumping = true;
     } else {
-        player.speed += 1; // 右側タップで加速
+        player.speed = player.speed * 1.1 // 右側タップで加速
     }
 }
 
