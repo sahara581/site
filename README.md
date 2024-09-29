@@ -1,5 +1,3 @@
-![sahara](https://img.shields.io/badge/Creater_name-sahara-red.svg)
-
 # README
 
 This repository contains multiple sites by me, sahara581.
