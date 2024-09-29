@@ -28,10 +28,10 @@ Deceleration is not possible. When accelerated, the speed increases by a factor 
 ## Script Editor
 It is assumed to be printed upon completion.
 
-Enter one presenter at a time in the “発表者登録” section and add each by clicking the “追加” button to the right.
+Enter one presenter at a time in the “発表者登録(Presenter Registration)” section and add each by clicking the “追加(Add)” button to the right.
 ![](ReadMeMaterial/ScreenShot_ScirptEditor_PresenterRegistration.png)
 
-Enter the section title in the upper form of “原稿入力” and the content in the lower form, then click the “保存” button to add the section.
+Enter the section title in the upper form of “原稿入力(Manuscript Entry)” and the content in the lower form, then click the “保存(Save)” button to add the section.
 Recommended : 1 section per slide.
 ![](ReadMeMaterial/ScreenShot_ScirptEditor_ManuscriptEntry.png)
 
