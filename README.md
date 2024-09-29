@@ -6,9 +6,9 @@ All files in this repository are provided under the MIT License. For more inform
 
 <a name="chap-technologies"></a>
 ## Technologies used
-(https://img.shields.io/badge/-HTML5-404040.svg?logo=html5&style=for-the-badge)
-(https://img.shields.io/badge/-Javascript-404040.svg?logo=javascript&style=for-the-badge)
-(https://img.shields.io/badge/-Css3-404040.svg?logo=css3&style=for-the-badge)
+![](https://img.shields.io/badge/-HTML5-404040.svg?logo=html5&style=for-the-badge)
+![](https://img.shields.io/badge/-Javascript-404040.svg?logo=javascript&style=for-the-badge)
+![](https://img.shields.io/badge/-Css3-404040.svg?logo=css3&style=for-the-badge)
 
 <a name="chap-license"></a>
 ## License
