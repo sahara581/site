@@ -1,0 +1,40 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: black;
+}
+
+main {
+  margin: 0 100px;
+  height: 1000px;
+  background-color: white;
+}
+
+.header2 {
+  text-align: center;
+  background-color: #0075c2;
+  padding: 0 10px;
+  margin: 0px;
+  color: white;
+}
+
+.header1 {
+  text-align: center;
+  background-color: #0075c2;
+  padding: 0 10px;
+  margin: 0px;
+  color: white;
+}
+
+.musahi-link {
+  color: blue;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+.info-table {
+  width: 30%;
+  margin: auto;
+  display: block;
+}
