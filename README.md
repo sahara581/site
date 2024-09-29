@@ -25,7 +25,6 @@ Tap the right half of the screen : Acceleration
 Tap the left half of the screen : Jump
 Deceleration is not possible. When accelerated, the speed increases by a factor of 1.1.
 
-
 ## Script Game
 
 <a name="chap-license"></a>
