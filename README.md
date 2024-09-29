@@ -25,7 +25,21 @@ Tap the right half of the screen : Acceleration
 Tap the left half of the screen : Jump
 Deceleration is not possible. When accelerated, the speed increases by a factor of 1.1.
 
-## Script Game
+## Script Editor
+It is assumed to be printed upon completion.
+
+Enter one presenter at a time in the “Presenter Registration” section and add each by clicking the “Add” button to the right.
+
+Enter the section title in the upper form of “Manuscript Entry” and the content in the lower form, then click the “Save” button to add the section.
+Recommended : 1 section per slide.
+
+The “Export data to JSON” button on the left side can be used to export data in Json format. Press the “Select File” button on the right to select the Json file you wish to import, and the selected Json file will be read. The data entered at that time will be lost, so it is recommended to make a backup of the data.
+
+In the “Section List,” registered sections are saved in the order in which they were registered, and the order can be changed by dragging. The orange “Edit” button allows editing in the “Manuscript Entry” form, and the red “Delete” button deletes the section. In this case, it is recommended to make a backup with a Json file. From the pull-down menu, only one of the registered presenters can be selected.
+
+The entered data is automatically saved in LocalStorage.
+When printing, the input form and buttons for each section are hidden to complete an easily visible manuscript.
+
 
 <a name="chap-license"></a>
 ## License
