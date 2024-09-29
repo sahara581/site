@@ -11,6 +11,9 @@ All files in this repository are provided under the MIT License. For more inform
 ![JAVASCRIPT](https://img.shields.io/badge/-Javascript-303030.svg?logo=javascript&style=for-the-badge)
 ![CSS3](https://img.shields.io/badge/-Css3-303030.svg?logo=css3&style=for-the-badge)
 
+## Tools used
+![Microsft Edge](<https://img.shields.io/badge/-Microsoftedge-0078D7.svg?logo=microsoftedge&style=for-the-badge)
+
 <a name="chap-license"></a>
 ## License
 [LICENSE.md](../main/LICENSE)
