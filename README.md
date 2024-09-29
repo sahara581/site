@@ -25,7 +25,7 @@ Tap the right half of the screen : Acceleration
 Tap the left half of the screen : Jump
 Deceleration is not possible. When accelerated, the speed increases by a factor of 1.1.
 
-## Script Editor
+## [Script Editor](https://sahara581.github.io/site/Script/index.html)
 It is assumed to be printed upon completion.
 
 Enter one presenter at a time in the “発表者登録(Presenter Registration)” section and add each by clicking the “追加(Add)” button to the right.
