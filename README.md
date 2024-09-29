@@ -6,4 +6,4 @@ All files in this repository are provided under the MIT License. For more inform
 
 <a name="chap-license"></a>
 ## License
-[LICENSE.md](LICENSE.md)
+[LICENSE.md](docs/LICENSE.md)
