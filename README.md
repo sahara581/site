@@ -20,7 +20,7 @@ While I usually make games in Unity, I tried to see how well I could make games 
 I never thought I could make a good game, and in fact, I couldn't.
 Instead, with the support of my friends, I succeeded in making the worst game I had ever made.
 Instead, with the support of my friends, I succeeded in making the worst game in my history.
-### Operate
+#### Operate
 Tap the right half of the screen : Acceleration
 Tap the left half of the screen : Jump
 Deceleration is not possible. When accelerated, the speed increases by a factor of 1.1.
