@@ -13,6 +13,7 @@ All files in this repository are provided under the MIT License. For more inform
 
 ## Tools used
 ![Microsoft Edge](https://img.shields.io/badge/-Microsoftedge-404040.svg?logo=microsoftedge&style=for-the-badge)
+![Google Chrome](https://img.shields.io/badge/-Google%20chrome-404040.svg?logo=google-chrome&style=for-the-badge)
 ![Safari](https://img.shields.io/badge/-Safari-404040.svg?logo=safari&style=for-the-badge)
 
 <a name="chap-license"></a>
