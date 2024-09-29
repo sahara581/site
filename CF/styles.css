@@ -1,40 +1,147 @@
+/* 全体のリセット */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 全体レイアウト */
 body {
-  margin: 0px;
-  padding: 0px;
-  background-color: black;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background-color: #082752; /* 濃い寒色の背景 */
+    text-align: center; /* コンテンツを中央寄せ */
 }
 
-main {
-  margin: 0 100px;
-  height: 1000px;
-  background-color: white;
+html {
+    scroll-behavior: smooth;
 }
 
-.header2 {
-  text-align: center;
-  background-color: #0075c2;
-  padding: 0 10px;
-  margin: 0px;
-  color: white;
+/* ヘッダー */
+header {
+    background-image: url('https://cdn.pixabay.com/photo/2024/03/04/16/44/branches-8612695_1280.jpg'); /* 背景画像を設定 */
+    background-size: cover; /* 画像がヘッダー全体をカバーするようにする */
+    background-position: center; /* 画像の位置を中央に設定 */
+    background-color: rgba(0, 0, 0, 0.5); /* 背景画像が見やすくなるようにオーバーレイを追加 */
+    padding: 20px;
+    height: 30vh; /* ビューポートの高さ全体を使用 */
+    color: #fff;
+    overflow: hidden; /* ヘッダー内の要素がはみ出さないようにする */
+    display: flex; /* フレックスボックスで内容を中央寄せ */
+    align-items: center; /* 垂直方向に中央寄せ */
+    justify-content: center; /* 水平方向に中央寄せ */
+    position: relative;
 }
 
-.header1 {
-  text-align: center;
-  background-color: #0075c2;
-  padding: 0 10px;
-  margin: 0px;
-  color: white;
+.header-content {
+    text-align: center;
 }
 
-.musahi-link {
-  color: blue;
-  text-decoration: none;
-  text-align: center;
-  display: block;
+.main-title {
+    font-size: 3em;
+    margin-bottom: 0.5em;
 }
 
-.info-table {
-  width: 30%;
-  margin: auto;
-  display: block;
+.subtitle {
+    font-size: 1.5em;
+}
+
+/* ナビゲーション */
+nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* ナビゲーション背景色 */
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+/* イベント情報セクション */
+#events {
+    padding: 20px;
+    background-color: #082752; /* 濃い寒色 */
+}
+
+.events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.event-item {
+    background-color: #8b0000; /* アクセントカラー */
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    flex: 1 1 300px; /* レスポンシブデザイン対応 */
+}
+
+/* フォトギャラリーセクション */
+#gallery {
+    padding: 20px;
+    background-color: #082752; /* 濃い寒色 */
+}
+
+.gallery-container {
+    overflow-x: auto; /* 横スクロールを有効にする */
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.gallery-item {
+    margin: 10px;
+    flex: 0 0 auto;
+}
+
+.gallery-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 学校情報セクション */
+#info {
+    padding: 20px;
+    background-color: #082752; /* 濃い寒色 */
+}
+
+.school-info {
+    text-align: center;
+}
+
+.social-links a {
+    display: inline-block;
+    color: #fff;
+    margin: 5px 10px;
+    text-decoration: none;
+}
+
+/* フッター */
+footer {
+    background-color: #8b0000; /* アクセントカラー */
+    padding: 10px;
+    color: #fff;
+    position: relative;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
 }
