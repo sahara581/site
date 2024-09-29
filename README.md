@@ -33,6 +33,7 @@ Enter one presenter at a time in the “発表者登録” section and add each 
 
 Enter the section title in the upper form of “原稿入力” and the content in the lower form, then click the “保存” button to add the section.
 Recommended : 1 section per slide.
+![](ReadMeMaterial/ScreenShot_ScirptEditor_ManuscriptEntry.png)
 
 The “データをJSONにエクスポート” button on the left side can be used to export data in Json format. Press the “ファイルを選択” button on the right to select the Json file you wish to import, and the selected Json file will be read. The data entered at that time will be lost, so it is recommended to make a backup of the data.
 
