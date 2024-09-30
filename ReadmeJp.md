@@ -31,8 +31,8 @@
 
 「セクション一覧」では登録済セクションが登録順に表示され、ドラッグで順番を入れ替えられます。「編集」からは「原稿入力」での編集、「削除」からはセクションの削除が可能です。削除する場合は万一に備えJsonファイルのバックアップを取っておくことをおすすめします。プルダウンメニューからは登録済発表者のうち1人のみを選択できます。
 
-The entered data is automatically saved in LocalStorage.<br>
-When printing, the input form and buttons for each section are hidden to complete an easily visible manuscript.
+入力されたデータはLocalStorageに自動で保存されます。<br>
+印刷時には各セクションの入力フォームやボタン等が非表示になり、見やすい原稿が完成します。
 
 
 ## 使用技術・ツール
