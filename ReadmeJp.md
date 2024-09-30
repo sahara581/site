@@ -12,10 +12,10 @@
 普段、Unityでゲームを作っていますが、HTMLではゲームをどれだけのものが作れるのか知りたくなり試してみました。<br>
 もとから、良いゲームを作れるとは思っておらず、その予想は的中しました。
 代わりに、友人の要望に基づき、自分史上最悪のゲームを作ることにしました。
-#### Operate
-Tap the right half of the screen : Acceleration
-Tap the left half of the screen : Jump
-Deceleration is not possible. When accelerated, the speed increases by a factor of 1.1.
+#### 操作方法
+画面右半分タップ : 加速
+画面左半分タップ : ジャンプ
+減速はできません. 加速は1.1倍です。
 
 ## [Script Editor](https://sahara581.github.io/site/Script/index.html)
 It is assumed to be printed upon completion.<br>
