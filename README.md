@@ -49,5 +49,3 @@ When printing, the input form and buttons for each section are hidden to complet
 
 ![GitHub](https://img.shields.io/badge/-GitHub-303030.svg?logo=GITHUB&style=for-the-badge)
 ![Visual Studio Code](https://img.shields.io/badge/-VISUAL_STUDIO_CODE-303030.svg?logo=VSCode&style=for-the-badge)
-
-![](https://img.shields.io/badge/--303030.svg?logo=&style=for-the-badge)
