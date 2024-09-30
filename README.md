@@ -42,7 +42,11 @@ When printing, the input form and buttons for each section are hidden to complet
 [LICENSE.md](../main/LICENSE)
 
 
-## Technologies used
+## Technologies and Tools used
 ![HTML5](https://img.shields.io/badge/-HTML5-303030.svg?logo=html5&style=for-the-badge)
 ![JAVASCRIPT](https://img.shields.io/badge/-Javascript-303030.svg?logo=javascript&style=for-the-badge)
+![CSS3](https://img.shields.io/badge/-Css3-303030.svg?logo=css3&style=for-the-badge)
+
+![GitHub](https://img.shields.io/badge/-GitHub-303030.svg?logo=GITHUB&style=for-the-badge)
+![CSS3](https://img.shields.io/badge/-Css3-303030.svg?logo=css3&style=for-the-badge)
 ![CSS3](https://img.shields.io/badge/-Css3-303030.svg?logo=css3&style=for-the-badge)
