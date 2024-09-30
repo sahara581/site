@@ -1,6 +1,6 @@
 # README
 
-英語版は[こちら](https://github.com/sahara581/site/blob/main/README.md)。
+Engilish version [here](https://github.com/sahara581/site/blob/main/README.md).
 
 このリポジトリには、私、sahara581 による複数のサイトが含まれています。このリポジトリ内のファイル群は、主に制作者の学習、遊び、実用を目的としており、HTML ゲームや実用ツールなどが含まれています。
 
