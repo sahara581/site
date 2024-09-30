@@ -37,11 +37,6 @@ The entered data is automatically saved in LocalStorage.<br>
 When printing, the input form and buttons for each section are hidden to complete an easily visible manuscript.
 
 
-<a name="chap-license"></a>
-## License
-[LICENSE.md](../main/LICENSE)
-
-
 ## Technologies and Tools used
 ![HTML5](https://img.shields.io/badge/-HTML5-303030.svg?logo=html5&style=for-the-badge)
 ![JAVASCRIPT](https://img.shields.io/badge/-Javascript-303030.svg?logo=javascript&style=for-the-badge)
@@ -49,3 +44,10 @@ When printing, the input form and buttons for each section are hidden to complet
 
 ![GitHub](https://img.shields.io/badge/-GitHub-303030.svg?logo=GITHUB&style=for-the-badge)
 ![Visual Studio Code](https://img.shields.io/badge/-VISUAL_STUDIO_CODE-303030.svg?logo=VSCode&style=for-the-badge)
+
+
+<a name="chap-license"></a>
+## License
+MIT LICENSE
+[LICENSE.md](../main/LICENSE)
+
