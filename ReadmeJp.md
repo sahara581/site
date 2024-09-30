@@ -17,14 +17,14 @@
 画面左半分タップ : ジャンプ
 減速はできません. 加速は1.1倍です。
 
-## [Script Editor](https://sahara581.github.io/site/Script/index.html)
-It is assumed to be printed upon completion.<br>
+## [発表原稿エディタ](https://sahara581.github.io/site/Script/index.html)
+完成時に印刷して本番に臨むことを前提にしています。<br>
 
-Enter one presenter at a time in the “発表者登録(Presenter Registration)” section and add each by clicking the “追加(Add)” button to the right.<br>
+「発表者登録」は1度に一人の発表者を入力し、都度「追加」を押してください。<br>
 ![](ReadMeMaterial/ScreenShot_ScirptEditor_PresenterRegistration.png)
 
-Enter the section title in the upper form of “原稿入力(Manuscript Entry)” and the content in the lower form, then click the “保存(Save)” button to add the section.
-Recommended : 1 section per slide.<br>
+「原稿入力」の上フォームにセクションタイトルを入力し、下フォームにその内容を入力し、「保存」でセクションを追加します。<br>
+推奨：1スライドあたり1セクション<br>
 ![](ReadMeMaterial/ScreenShot_ScirptEditor_ManuscriptEntry.png)
 
 The “データをJSONにエクスポート” button on the left side can be used to export data in Json format. Press the “ファイルを選択” button on the right to select the Json file you wish to import, and the selected Json file will be read. The data entered at that time will be lost, so it is recommended to make a backup of the data.
