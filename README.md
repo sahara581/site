@@ -15,7 +15,6 @@ It was not actually used at the festival, but I learned a lot about exchanging d
 While I usually make games in Unity, I tried to see how well I could make games in HTML.
 I never thought I could make a good game, and in fact, I couldn't.
 Instead, with the support of my friends, I succeeded in making the worst game I had ever made.
-Instead, with the support of my friends, I succeeded in making the worst game in my history.
 #### Operate
 Tap the right half of the screen : Acceleration
 Tap the left half of the screen : Jump
@@ -31,9 +30,9 @@ Enter the section title in the upper form of “原稿入力(Manuscript Entry)�
 Recommended : 1 section per slide.<br>
 ![](ReadMeMaterial/ScreenShot_ScirptEditor_ManuscriptEntry.png)
 
-The “データをJSONにエクスポート” button on the left side can be used to export data in Json format. Press the “ファイルを選択” button on the right to select the Json file you wish to import, and the selected Json file will be read. The data entered at that time will be lost, so it is recommended to make a backup of the data.
+The “データをJSONにエクスポート(Export Data For JSON)” button on the left side can be used to export data in Json format. Press the “ファイルを選択(Select File)” button on the right to select the Json file you wish to import, and the selected Json file will be read. The data entered at that time will be lost, so it is recommended to make a backup of the data.
 
-In the “セクション一覧,” registered sections are saved in the order in which they were registered, and the order can be changed by dragging. The orange “編集” button allows editing in the “原稿入力” form, and the red “削除” button deletes the section. In this case, it is recommended to make a backup with a Json file. From the pull-down menu, only one of the registered presenters can be selected.
+In the “セクション一覧(Section List),” registered sections are saved in the order in which they were registered, and the order can be changed by dragging. The orange “編集(Edit)” button allows editing in the “原稿入力(Manuscript Entry)” form, and the red “削除(Delete)” button deletes the section. In this case, it is recommended to make a backup with a Json file. From the pull-down menu, only one of the registered presenters can be selected.
 
 The entered data is automatically saved in LocalStorage.<br>
 When printing, the input form and buttons for each section are hidden to complete an easily visible manuscript.
