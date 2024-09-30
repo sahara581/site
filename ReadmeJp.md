@@ -27,9 +27,9 @@
 推奨：1スライドあたり1セクション<br>
 ![](ReadMeMaterial/ScreenShot_ScirptEditor_ManuscriptEntry.png)
 
-The “データをJSONにエクスポート” button on the left side can be used to export data in Json format. Press the “ファイルを選択” button on the right to select the Json file you wish to import, and the selected Json file will be read. The data entered at that time will be lost, so it is recommended to make a backup of the data.
+「データ管理」の「データをJSONにエクスポート」からJson形式でデータをエクスポートできます。「ファイルを選択」からインポートしたいJsonファイルを選択すると、選択したファイルが読み込まれます。その際に入力されていたデータは失われるため、バックアップを取っておくことをおすすめします。
 
-In the “セクション一覧,” registered sections are saved in the order in which they were registered, and the order can be changed by dragging. The orange “編集” button allows editing in the “原稿入力” form, and the red “削除” button deletes the section. In this case, it is recommended to make a backup with a Json file. From the pull-down menu, only one of the registered presenters can be selected.
+「セクション一覧」では登録済セクションが登録順に表示され、ドラッグで順番を入れ替えられます。「編集」からは「原稿入力」での編集、「削除」からはセクションの削除が可能です。削除する場合は万一に備えJsonファイルのバックアップを取っておくことをおすすめします。プルダウンメニューからは登録済発表者のうち1人のみを選択できます。
 
 The entered data is automatically saved in LocalStorage.<br>
 When printing, the input form and buttons for each section are hidden to complete an easily visible manuscript.
