@@ -48,6 +48,6 @@ When printing, the input form and buttons for each section are hidden to complet
 ![CSS3](https://img.shields.io/badge/-Css3-303030.svg?logo=css3&style=for-the-badge)
 
 ![GitHub](https://img.shields.io/badge/-GitHub-303030.svg?logo=GITHUB&style=for-the-badge)
-![Windows](https://img.shields.io/badge/-Windows-303030.svg?logo=WINDOWS&style=for-the-badge)
+![Windows](https://img.shields.io/badge/-VISUAL_STUDIO_CODE-303030.svg?logo=VSCode&style=for-the-badge)
 
 ![](https://img.shields.io/badge/--303030.svg?logo=&style=for-the-badge)
