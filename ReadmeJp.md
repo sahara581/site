@@ -1,19 +1,17 @@
 # README
 
-This repository contains multiple sites by me, sahara581.
-The files in this repository are primarily for the creator's learning, play and practical use, and include HTML games, practical tools and more.
+このリポジトリには、私、sahara581 による複数のサイトが含まれています。このリポジトリ内のファイル群は、主に制作者の学習、遊び、実用を目的としており、HTML ゲームや実用ツールなどが含まれています。
 
-All files in this repository are provided under the MIT License. For more information about the license, [please click here](#chap-license).
+このリポジトリ内のすべてのファイルは、MITライセンスの下公開しています。ライセンスの詳細については[こちら](#chap-license)へどうぞ。
 
-## [Calture Festival](https://sahara581.github.io/site/CF/CultureFestivalTopPage.html)
-This is a publicity and image posting site that I created for a school festival.
-It was not actually used at the festival, but I learned a lot about exchanging data with the server.
+## [学園祭ホームページ](https://sahara581.github.io/site/CF/CultureFestivalTopPage.html)
+学園祭用に作った広報・画像投稿サイトです。<br>
+実際に学園祭で使われることはありませんでしたが、サーバーとのデータ送受信などについての勉強になりました。
 
-## [Platformer Game](https://sahara581.github.io/site/PlatformerGame/index.html)
-While I usually make games in Unity, I tried to see how well I could make games in HTML.
-I never thought I could make a good game, and in fact, I couldn't.
-Instead, with the support of my friends, I succeeded in making the worst game I had ever made.
-Instead, with the support of my friends, I succeeded in making the worst game in my history.
+## [横スクロールアクションゲーム](https://sahara581.github.io/site/PlatformerGame/index.html)
+普段、Unityでゲームを作っていますが、HTMLではゲームをどれだけのものが作れるのか知りたくなり試してみました。<br>
+もとから、良いゲームを作れるとは思っておらず、その予想は的中しました。
+代わりに、友人の要望に基づき、自分史上最悪のゲームを作ることにしました。
 #### Operate
 Tap the right half of the screen : Acceleration
 Tap the left half of the screen : Jump
