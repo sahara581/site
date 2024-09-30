@@ -1,6 +1,6 @@
 # README
 
-Japanese version [here](https://github.com/sahara581/site/blob/main/ReadmeJp.md)
+Japanese version [here](https://github.com/sahara581/site/blob/main/ReadmeJp.md).
 
 This repository contains multiple sites by me, sahara581.
 The files in this repository are primarily for the creator's learning, play and practical use, and include HTML games, practical tools and more.
