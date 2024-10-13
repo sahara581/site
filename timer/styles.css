@@ -199,6 +199,19 @@ footer a {
     text-align: center;
 }
 
+.popup-content p {
+    margin-bottom: 20px; /* 段落の間に適度な余白を設定 */
+}
+
+#credits-popup .popup-content p:last-of-type {
+    margin-bottom: 30px; /* 最後の段落だけに多めの余白を追加 */
+}
+
+#credits-popup .popup-content small {
+    display: block;
+    margin-top: 20px; /* small要素の前に余白を追加 */
+}
+
 .popup-content p a {
     text-decoration: none;
     color: #3ea6ff;
