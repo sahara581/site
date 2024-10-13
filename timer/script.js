@@ -102,23 +102,38 @@ function startTimer() {
             updateTimerDisplay();
         } else {
             clearInterval(timerInterval);
-            alert('タイマー終了');
-            toggleTimerButton.innerHTML = '<i class="fas fa-play"></i>';
+            playAlarm();
+            // alert('タイマー終了');
+            resetTimer();
         }
     }, 10); // 10ミリ秒ごとに更新
+}
+
+function playAlarm() {
+    const timerAudio = new Audio('C:/Users/2024015581/Downloads/Clock-Alarm01-mp3/Timer-Alarm.mp3'); // 音声ファイルを指定
+    timerAudio.play(); // 音を再生
+
+    setTimeout(() => {
+        timerAudio.pause();
+        timerAudio.currentTime = 0; // 再生位置をリセット
+    }, 5000);
 }
 
 function stopTimer() {
     clearInterval(timerInterval);
 }
 
-resetTimerButton.addEventListener('click', () => {
+function resetTimer() {
     stopTimer();
     const initialTime = getTotalTimeInSeconds();
     timerTime = initialTime;
     timerMilliseconds = 0;
     updateTimerDisplay();
     toggleTimerButton.innerHTML = '<i class="fas fa-play"></i>';
+}
+
+resetTimerButton.addEventListener('click', () => {
+    resetTimer();
 });
 
 // タイマーの入力フォームとスライダーの同期
