@@ -207,6 +207,22 @@ section {
     border: 1px solid #ccc;
 }
 
+footer {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: white;
+    margin: 0px 20px;
+    font-size: 20px;
+}
+
 @media print {
     button {
         display: none;
@@ -227,6 +243,9 @@ section {
         display: none;
     }
     #presenter-registration {
+        display: none;
+    }
+    footer {
         display: none;
     }
 }
