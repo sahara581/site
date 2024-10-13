@@ -229,8 +229,17 @@ footer button {
     transition: background-color 0.3s ease;
 }
 
+footer button a {
+    color: white;
+}
+
+footer button a i {
+    color: white;
+}
+
 footer button:hover {
     background-color: #003f7f; /* ボタンにホバー時の色変化 */
+    color: white;
 }
 
 .success-msg {
