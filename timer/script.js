@@ -200,6 +200,26 @@ secondsSlider.addEventListener('input', () => {
     updateTimerDisplay();
 });
 
+// - Credits -----------------------------------------------------------------------------------------------------
+const creditsBtn = document.getElementById('credits-btn');
+const creditsPopup = document.getElementById('credits-popup');
+const closePopup = document.getElementById('close-popup');
+
+creditsBtn.addEventListener('click', () => {
+    creditsPopup.style.display = 'flex';
+});
+
+closePopup.addEventListener('click', () => {
+    creditsPopup.style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target === creditsPopup) {
+        creditsPopup.style.display = 'none';
+    }
+});
+// ------------------------------------------------------------------------------------------------------------
+
 // 時計と日付表示機能
 function updateClock() {
     const now = new Date();
