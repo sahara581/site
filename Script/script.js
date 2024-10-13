@@ -108,8 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <strong class="section-item-title">${title}</strong>
             <span class="section-item-presenter">${presenter}</span>
             <p class="section-item-contents">${convertNewlinesToBr(content)}</p>
-            <button class="edit-btn" onclick="editSection(this)">編集</button>
-            <button class="delete-btn" onclick="deleteSection(this)">削除</button>
+            <button class="edit-btn" onclick="editSection(this)"><i class="fas fa-edit"></i></button>
+            <button class="delete-btn" onclick="deleteSection(this)"><i class="fas fa-trash"></i></button>
             <select class="presenter-select">
                 ${Array.from(presenterList.querySelectorAll('.presenter-item'))
                     .map(p => `<option value="${p.textContent.trim()}">${p.textContent.trim()}</option>`)
