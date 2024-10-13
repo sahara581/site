@@ -64,8 +64,27 @@
 
     <footer>
         <button><a href="https://sahara581.github.io/site/services/index.html"><i class="fas fa-home"></a></button>
+        <button id="copy-url" data-url="https://sahara581.github.io/site/Script/index.html"><i class="fas fa-clipboard"></i></button>
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.13/clipboard.min.js"></script>
+    <script>
+        $(function () {
+            $('#copy-url').click(function () {
+                // data-urlの値を取得
+                const url = $(this).data('url');
+
+                // クリップボードにコピー
+                navigator.clipboard.writeText(url);
+
+                // フラッシュメッセージ表示
+                $('.success-msg').fadeIn("slow", function () {
+                    $(this).delay(2000).fadeOut("slow");
+                });
+            });
+        });
+    </script>
 </body>
 </html>
