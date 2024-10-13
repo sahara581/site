@@ -23,11 +23,11 @@ Engilish version [here](https://github.com/sahara581/site/blob/main/README.md).
 完成時に印刷して本番に臨むことを前提にしています。<br>
 
 「発表者登録」は1度に一人の発表者を入力し、都度「追加」を押してください。<br>
-![](ReadMeMaterial/ScreenShot_ScirptEditor_PresenterRegistration.png)
+![](ReSources/Images/ReadMeMaterial/ScreenShot_ScirptEditor_PresenterRegistration.png)
 
 「原稿入力」の上フォームにセクションタイトルを入力し、下フォームにその内容を入力し、「保存」でセクションを追加します。<br>
 推奨：1スライドあたり1セクション<br>
-![](ReadMeMaterial/ScreenShot_ScirptEditor_ManuscriptEntry.png)
+![](ReSources/Images/ReadMeMaterial/ScreenShot_ScirptEditor_ManuscriptEntry.png)
 
 「データ管理」の「データをJSONにエクスポート」からJson形式でデータをエクスポートできます。「ファイルを選択」からインポートしたいJsonファイルを選択すると、選択したファイルが読み込まれます。その際に入力されていたデータは失われるため、バックアップを取っておくことをおすすめします。
 
