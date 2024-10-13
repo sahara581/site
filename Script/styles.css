@@ -211,15 +211,26 @@ footer {
     background-color: #007bff;
     color: white;
     text-align: center;
-    padding: 10px 0;
-    bottom: 0;
+    padding: 20px 0; /* 上下のパディングを少し増やしました */
     width: 100%;
+    display: flex;
+    justify-content: center; /* ボタンを中央に配置 */
+    gap: 20px; /* ボタン同士の間隔を追加 */
 }
 
 footer button {
+    background-color: #0056b3; /* 少し濃い色に変更 */
     color: white;
-    margin: 0px 20px;
-    font-size: 20px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+footer button:hover {
+    background-color: #003f7f; /* ボタンにホバー時の色変化 */
 }
 
 @media print {
