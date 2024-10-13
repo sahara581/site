@@ -110,7 +110,7 @@ function startTimer() {
 }
 
 function playAlarm() {
-    const timerAudio = new Audio('C:/Users/2024015581/Downloads/Clock-Alarm01-mp3/Timer-Alarm.mp3'); // 音声ファイルを指定
+    const timerAudio = new Audio('../ReSources/Audios/Timer-Alarm.mp3'); // 音声ファイルを指定
     timerAudio.play(); // 音を再生
 
     setTimeout(() => {
