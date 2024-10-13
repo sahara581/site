@@ -233,6 +233,22 @@ footer button:hover {
     background-color: #003f7f; /* ボタンにホバー時の色変化 */
 }
 
+.success-msg {
+    display: none;
+    position: fixed;
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #29aba4;
+    color: #fff;
+    top: 100px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    border-radius: 5px;
+}
+
 @media print {
     button {
         display: none;
