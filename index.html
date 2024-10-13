@@ -1,0 +1,108 @@
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サービスリンク集</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+    <div class="container">
+        <h1>サービス一覧</h1>
+        <ul class="site-list">
+
+            <li class="site-item">
+                    <div class="site-title"><a href="https://sahara581.github.io/site/Script/index.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-pencil"></i> 発表原稿エディター</a></div>
+                    <p class="site-description">発表原稿の作成から印刷までサポートするエディタツール</p>
+                    <button class="copy-url" data-url="https://sahara581.github.io/site/Script/index.html"><i class="fas fa-clipboard"></i></button>
+            </li>
+
+            <li class="site-item">
+                <div class="site-title"><a href="https://sahara581.github.io/site/timer/index.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-clock"></i> ストップウォッチ・タイマー・デジタル時計</a></div>
+                <p class="site-description">あなたの時間管理をサポートする最もシンプルで使いやすいタイマー。</p>
+                <button class="copy-url" data-url="https://sahara581.github.io/site/timer/index.html"><i class="fas fa-clipboard"></i></button>
+            </li>
+
+            <li class="site-item">
+                <div class="site-title"><a href="https://sahara581.github.io/site/PlatformerGame/index.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> 2Dプラットフォーム</a></div>
+                <p class="site-description">これこそ至高の神クソゲー！「2Dプラットフォーム」を今すぐプレイ！</p>
+                <button class="copy-url" data-url="https://sahara581.github.io/site/PlatformerGame/index.html"><i class="fas fa-clipboard"></i></button>
+            </li>
+
+            <li class="site-item">
+                <div class="site-title"><a href="https://unityroom.com/games/hyperion" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> HYPERION</a></div>
+                <p class="site-description">最も好評のモバイルミニゲーム。誰よりも高みへ！　　※外部サイト</p>
+                <button class="copy-url" data-url="https://unityroom.com/games/hyperion"><i class="fas fa-clipboard"></i></button>
+            </li>
+
+            <li class="site-item">
+                <div class="site-title"><a href="https://unityroom.com/games/charonsobol" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> CHARON'S OBOL</a></div>
+                <p class="site-description">PC向け2Dアクションゲーム。GO GO GO！　　※外部サイト</p>
+                <button class="copy-url" data-url="https://unityroom.com/games/charonsobol"><i class="fas fa-clipboard"></i></button>
+            </li>
+
+            <!--
+            <li class="site-item">
+                <div class="site-title"><a href="https://unityroom.com/games/fllapingicarus" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> ICARUS</a></div>
+                <p class="site-description">モバイル向けフラッピーバード。驕りは己の身を亡ぼす！　　※外部サイト</p>
+                <button class="copy-url" data-url="https://unityroom.com/games/fllapingicarus"><i class="fas fa-clipboard"></i></button>
+            </li>
+            -->
+
+            <li class="site-item">
+                <div class="site-title"><a href="https://unityroom.com/games/wam" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> WHAC A MOL -On The CUBE-</a></div>
+                <p class="site-description">新感覚！ユニークさを追求したモグラ叩き！　　※外部サイト</p>
+                <button class="copy-url" data-url="https://unityroom.com/games/wam"><i class="fas fa-clipboard"></i></button>
+            </li>
+
+            <li class="site-item">
+                <div class="site-title"><a href="https://unityroom.com/games/up-down_rocket" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> UP-DOWN-CLASH！</a></div>
+                <p class="site-description">モバイル向け横スクロールアクション。永久に進め、どこまでも！　　※外部サイト</p>
+                <button class="copy-url" data-url="https://unityroom.com/games/up-down_rocket"><i class="fas fa-clipboard"></i></button>
+            </li>
+
+            <li class="site-item">
+                <div class="site-title"><a href="https://unityroom.com/games/chollima" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> CHOLLIMA</a></div>
+                <p class="site-description">モバイル向けカートゲーム。限りなく速く！　　※外部サイト</p>
+                <button class="copy-url" data-url="https://unityroom.com/games/chollima"><i class="fas fa-clipboard"></i></button>
+            </li>
+
+            <!-- 追加のサイトをここに追加できます -->
+        </ul>
+    </div>
+
+    <div class="success-msg">クリップボードにコピーしました</div>
+
+    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.13/clipboard.min.js"></script>
+    <script>
+        $(function () {
+            $('.copy-url').click(function () {
+                // data-urlの値を取得
+                const url = $(this).data('url');
+
+                // クリップボードにコピー
+                navigator.clipboard.writeText(url);
+
+                // フラッシュメッセージ表示
+                $('.success-msg').fadeIn("slow", function () {
+                    $(this).delay(2000).fadeOut("slow");
+                });
+            });
+        });
+    </script>
+    </body>
+    </html>
+
+
+<!--
+
+
+            <li class="site-item">
+                <div class="site-title"><a href="--------------------" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> ----------</a></div>
+                <p class="site-description">--------------------</p>
+                <button class="copy-url" data-url="--------------------"><i class="fas fa-clipboard"></i></button>
+            </li>
+-->
