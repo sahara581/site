@@ -24,11 +24,11 @@ Deceleration is not possible. When accelerated, the speed increases by a factor 
 It is assumed to be printed upon completion.<br>
 
 Enter one presenter at a time in the “発表者登録(Presenter Registration)” section and add each by clicking the “追加(Add)” button to the right.<br>
-![](ReadMeMaterial/ScreenShot_ScirptEditor_PresenterRegistration.png)
+![](ReSources/Images/ReadMeMaterial/ScreenShot_ScirptEditor_PresenterRegistration.png)
 
 Enter the section title in the upper form of “原稿入力(Manuscript Entry)” and the content in the lower form, then click the “保存(Save)” button to add the section.
 Recommended : 1 section per slide.<br>
-![](ReadMeMaterial/ScreenShot_ScirptEditor_ManuscriptEntry.png)
+![](ReSources/Images/ReadMeMaterial/ScreenShot_ScirptEditor_ManuscriptEntry.png)
 
 The “データをJSONにエクスポート(Export Data For JSON)” button on the left side can be used to export data in Json format. Press the “ファイルを選択(Select File)” button on the right to select the Json file you wish to import, and the selected Json file will be read. The data entered at that time will be lost, so it is recommended to make a backup of the data.
 
