@@ -13,7 +13,8 @@ document.getElementById('stopwatch-tab').click();  // デフォルトでスト�
 
 // ストップウォッチ機能
 let stopwatchInterval;
-let stopwatchTime = 0;
+let stopwatchTime = 0; // 秒
+let stopwatchMilliseconds = 0; // ミリ秒
 const stopwatchTimeDisplay = document.getElementById('stopwatch-time');
 const toggleStopwatchButton = document.getElementById('toggle-stopwatch');
 const resetStopwatchButton = document.getElementById('reset-stopwatch');
@@ -25,19 +26,25 @@ resetStopwatchButton.innerHTML = '<i class="fas fa-redo"></i>'; // リセット�
 toggleStopwatchButton.addEventListener('click', () => {
     if (toggleStopwatchButton.innerHTML.includes('fa-play')) {
         startStopwatch();
-        toggleStopwatchButton.innerHTML = '<i class="fas fa-pause"></i>'; // 「一時停止」のアイコンに変更
+        toggleStopwatchButton.innerHTML = '<i class="fas fa-pause"></i>';
     } else if (toggleStopwatchButton.innerHTML.includes('fa-pause')) {
         stopStopwatch();
-        toggleStopwatchButton.innerHTML = '<i class="fas fa-play"></i>'; // 「再開」のアイコンに変更
+        toggleStopwatchButton.innerHTML = '<i class="fas fa-play"></i>';
     }
 });
 
 function startStopwatch() {
     clearInterval(stopwatchInterval);
     stopwatchInterval = setInterval(() => {
-        stopwatchTime++;
-        stopwatchTimeDisplay.textContent = new Date(stopwatchTime * 1000).toISOString().substr(11, 8);
-    }, 1000);
+        stopwatchMilliseconds++;
+        if (stopwatchMilliseconds >= 100) {
+            stopwatchMilliseconds = 0;
+            stopwatchTime++;
+        }
+        const timeString = new Date(stopwatchTime * 1000).toISOString().substr(11, 8);
+        const millisecondsString = String(stopwatchMilliseconds).padStart(3, '0');
+        stopwatchTimeDisplay.textContent = `${timeString}.${millisecondsString}`;
+    }, 10); // 10ミリ秒ごとに更新
 }
 
 function stopStopwatch() {
@@ -47,13 +54,15 @@ function stopStopwatch() {
 resetStopwatchButton.addEventListener('click', () => {
     stopStopwatch();
     stopwatchTime = 0;
-    stopwatchTimeDisplay.textContent = "00:00:00";
-    toggleStopwatchButton.innerHTML = '<i class="fas fa-play"></i>'; // 「開始」のアイコンに戻す
+    stopwatchMilliseconds = 0;
+    stopwatchTimeDisplay.textContent = "00:00:00.000";
+    toggleStopwatchButton.innerHTML = '<i class="fas fa-play"></i>';
 });
 
 // タイマー機能
 let timerInterval;
-let timerTime = 0;
+let timerTime = 0; // 秒
+let timerMilliseconds = 0; // ミリ秒
 const timerDisplay = document.getElementById('timer-display');
 const toggleTimerButton = document.getElementById('toggle-timer');
 const resetTimerButton = document.getElementById('reset-timer');
@@ -67,31 +76,36 @@ function updateTimerDisplay() {
     const hours = Math.floor(timerTime / 3600);
     const minutes = Math.floor((timerTime % 3600) / 60);
     const seconds = timerTime % 60;
-    timerDisplay.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    const millisecondsString = String(timerMilliseconds).padStart(3, '0');
+    timerDisplay.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${millisecondsString}`;
 }
 
 toggleTimerButton.addEventListener('click', () => {
     if (toggleTimerButton.innerHTML.includes('fa-play')) {
         startTimer();
-        toggleTimerButton.innerHTML = '<i class="fas fa-pause"></i>'; // 「一時停止」のアイコンに変更
+        toggleTimerButton.innerHTML = '<i class="fas fa-pause"></i>';
     } else if (toggleTimerButton.innerHTML.includes('fa-pause')) {
         stopTimer();
-        toggleTimerButton.innerHTML = '<i class="fas fa-play"></i>'; // 「再開」のアイコンに変更
+        toggleTimerButton.innerHTML = '<i class="fas fa-play"></i>';
     }
 });
 
 function startTimer() {
     clearInterval(timerInterval);
     timerInterval = setInterval(() => {
-        if (timerTime > 0) {
-            timerTime--;
+        if (timerTime > 0 || timerMilliseconds > 0) {
+            timerMilliseconds--;
+            if (timerMilliseconds < 0) {
+                timerMilliseconds = 99;
+                timerTime--;
+            }
             updateTimerDisplay();
         } else {
             clearInterval(timerInterval);
             alert('タイマー終了');
-            toggleTimerButton.innerHTML = '<i class="fas fa-play"></i>'; // 「開始」のアイコンに戻す
+            toggleTimerButton.innerHTML = '<i class="fas fa-play"></i>';
         }
-    }, 1000);
+    }, 10); // 10ミリ秒ごとに更新
 }
 
 function stopTimer() {
@@ -102,8 +116,9 @@ resetTimerButton.addEventListener('click', () => {
     stopTimer();
     const initialTime = getTotalTimeInSeconds();
     timerTime = initialTime;
+    timerMilliseconds = 0;
     updateTimerDisplay();
-    toggleTimerButton.innerHTML = '<i class="fas fa-play"></i>'; // 「開始」のアイコンに戻す
+    toggleTimerButton.innerHTML = '<i class="fas fa-play"></i>';
 });
 
 // タイマーの入力フォームとスライダーの同期
@@ -193,6 +208,3 @@ setInterval(updateClock, 1000);
 
 // ページ読み込み時に一度だけ時計を即時更新
 updateClock();
-
-// -----------------------------------------------------------------
-
