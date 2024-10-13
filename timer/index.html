@@ -19,18 +19,18 @@
 
         <!-- ストップウォッチ -->
         <div id="stopwatch" class="tab-content">
-            <h1 id="stopwatch-time">00:00:00</h1>
+            <h1 id="stopwatch-time">00:00:00.000</h1>
             <button id="toggle-stopwatch"><i class="fas fa-play"></i></button>
             <button id="reset-stopwatch"><i class="fas fa-undo"></i></button>
         </div>
 
         <!-- タイマー -->
         <div id="timer" class="tab-content">
-            <h2 id="timer-display">00:00:00</h2>
+            <h2 id="timer-display">00:00:00.000</h2>
             <div class="timer-controls">
                 <label for="hours-input">時</label>
-                <input type="number" id="hours-input" min="0" max="24" value="0">
-                <input type="range" id="hours-slider" min="0" max="24" value="0">
+                <input type="number" id="hours-input" min="0" max="23" value="0">
+                <input type="range" id="hours-slider" min="0" max="23" value="0">
             </div>
             <div class="timer-controls">
                 <label for="minutes-input">分</label>
