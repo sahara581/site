@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ストップウォッチ・タイマー・時間表示</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- ナビゲーションメニュー -->
+        <div class="nav">
+            <button id="stopwatch-tab"><i class="fas fa-stopwatch"></i> <span>ストップウォッチ</span></button>
+            <button id="timer-tab"><i class="fas fa-hourglass-half"></i> <span>タイマー</span></button>
+            <button id="clock-tab"><i class="fas fa-clock"></i> <span>時計</span></button>
+        </div>
+
+        <!-- ストップウォッチ -->
+        <div id="stopwatch" class="tab-content">
+            <h1 id="stopwatch-time">00:00:00</h1>
+            <button id="toggle-stopwatch"><i class="fas fa-play"></i></button>
+            <button id="reset-stopwatch"><i class="fas fa-undo"></i></button>
+        </div>
+
+        <!-- タイマー -->
+        <div id="timer" class="tab-content">
+            <h2 id="timer-display">00:00:00</h2>
+            <div class="timer-controls">
+                <label for="hours-input">時</label>
+                <input type="number" id="hours-input" min="0" max="24" value="0">
+                <input type="range" id="hours-slider" min="0" max="24" value="0">
+            </div>
+            <div class="timer-controls">
+                <label for="minutes-input">分</label>
+                <input type="number" id="minutes-input" min="0" max="60" value="0">
+                <input type="range" id="minutes-slider" min="0" max="60" value="0">
+            </div>
+            <div class="timer-controls">
+                <label for="seconds-input">秒</label>
+                <input type="number" id="seconds-input" min="0" max="59" value="0">
+                <input type="range" id="seconds-slider" min="0" max="59" value="0">
+            </div>
+            <button id="toggle-timer"><i class="fas fa-play"></i></button>
+            <button id="reset-timer"><i class="fas fa-undo"></i></button>
+        </div>
+
+        <!-- 時間表示 -->
+        <div id="clock" class="tab-content">
+            <h2 id="current-time">00:00:00</h2>
+            <p id="current-date">YYYY/MM/DD (曜日)</p>
+        </div>
+    </div>
+
+    <div class="success-msg">クリップボードにコピーしました</div>
+
+    <footer>
+            <button><a href="#"><i class="fas fa-home"></i></a></button>
+            <button id="copy-url" data-url="https://wikipedia.org"><i class="fas fa-clipboard"></i></button>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.13/clipboard.min.js"></script>
+    <script>
+        $(function () {
+            $('#copy-url').click(function () {
+                // data-urlの値を取得
+                const url = $(this).data('url');
+
+                // クリップボードにコピー
+                navigator.clipboard.writeText(url);
+
+                // フラッシュメッセージ表示
+                $('.success-msg').fadeIn("slow", function () {
+                    $(this).delay(2000).fadeOut("slow");
+                });
+            });
+        });
+    </script>
+</body>
+</html>
