@@ -227,3 +227,43 @@ h2 {
     opacity: 0;
     transition: opacity 0.5s ease; /* フェードイン・フェードアウト */
 }
+
+
+/* 画面幅が768px以下のときに適用（スマホ用） */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* 鉛筆アイコンを非表示にする */
+    .pencil-icon {
+        display: none;
+    }
+
+    .rightButtons-div {
+        display: flex;
+    }
+
+    .icon-btn {
+        margin: 0 10px;
+    }
+
+    .center-icons {
+        width: 100%;
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .icon-btn {
+        width: 100%;
+        padding: 15px 0;
+        font-size: 1.5rem;
+    }
+
+    .popup-content {
+        height: 60%;
+    }
+}
+
