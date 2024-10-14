@@ -5,27 +5,82 @@ function convertNumber() {
     const outputValue = document.getElementById("outputValue");
 
     let decimalValue;
+    let convertedValue;
 
     // 入力値が正しい進数形式かをチェック
     if (isValidInput(inputValue, inputBase)) {
-        decimalValue = parseInt(inputValue, inputBase); // 入力値を10進数に変換
-        let convertedValue = decimalValue.toString(outputBase);  // 指定された出力進数に変換
+        // 整数部分と小数部分に分ける
+        let [integerPart, fractionalPart] = inputValue.split('.');
+
+        // 整数部分を10進数に変換
+        let integerDecimalValue = parseInt(integerPart, inputBase);
+
+        // 小数部分を10進数に変換
+        let fractionalDecimalValue = fractionalPart ? parseFraction(fractionalPart, inputBase) : 0;
+
+        // 変換後の整数部分を指定進数に変換
+        let convertedIntegerPart = integerDecimalValue.toString(outputBase);
+
+        // 変換後の小数部分を指定進数に変換
+        let convertedFractionalPart = convertFraction(fractionalDecimalValue, outputBase);
+
+        // 結果を結合して出力
+        if (fractionalPart) {
+            convertedValue = convertedIntegerPart + "." + convertedFractionalPart;
+        } else {
+            convertedValue = convertedIntegerPart;
+        }
+
         outputValue.value = convertedValue.toUpperCase();  // 結果を大文字で表示
     } else {
         outputValue.value = "";  // 無効な場合は空白
     }
 }
 
+// 小数部分を10進数に変換する関数
+function parseFraction(fraction, base) {
+    let result = 0;
+    for (let i = 0; i < fraction.length; i++) {
+        result += parseInt(fraction[i], base) * Math.pow(base, -(i + 1));
+    }
+    return result;
+}
+
+// 小数部分を指定進数に変換する関数
+function convertFraction(fraction, base) {
+    let result = '';
+    let count = 0;
+    let precisionLimit = 10; // 小数部分の精度制限（小数点以下10桁）
+
+    while (fraction !== 0 && count < precisionLimit) {  // 精度を制限
+        fraction *= base;
+        let digit = Math.floor(fraction);
+        result += digit.toString(base);
+        fraction -= digit;
+        count++;
+    }
+    
+    return result;
+}
+
 // 入力値のバリデーション
 function isValidInput(value, base) {
-    const regexes = {
-        2: /^[01]+$/,          // 2進数
-        8: /^[0-7]+$/,         // 8進数
-        10: /^[0-9]+$/,        // 10進数
-        16: /^[0-9A-Fa-f]+$/    // 16進数
-    };
+    // 小数点が含まれるかどうかをチェック
+    const parts = value.split('.');
 
-    return regexes[base].test(value);
+    // 整数部分が指定進数に適合するかチェック
+    const integerPartValid = new RegExp(`^[0-9A-Fa-f]+$`).test(parts[0]);
+
+    // 小数部分があれば、その部分も指定進数に適合するかチェック
+    const fractionalPartValid = parts[1] ? new RegExp(`^[0-9A-Fa-f]+$`).test(parts[1]) : true;
+
+    // 小数点が含まれている場合、小数部分もバリデーションする
+    if (parts.length > 2 || !integerPartValid || !fractionalPartValid) {
+        return false;
+    }
+
+    // 整数部分と小数部分がそれぞれ進数に適合すれば valid とする
+    return true;
 }
 
 // クリップボードにコピーする機能
@@ -274,3 +329,21 @@ function formatDateTime(date) {
 
     return `${year}/${month}/${day}(${dayOfWeek}) ${hours}:${minutes}:${seconds}`;
 }
+
+// ツール説明ポップアップを開く処理
+document.getElementById('descriptionButton').addEventListener('click', function() {
+    const descriptionPopupContainer = document.getElementById('descriptionPopupContainer');
+
+    // ポップアップを表示
+    descriptionPopupContainer.style.display = 'flex';
+});
+
+// ポップアップ外をクリックしたら閉じる処理
+document.getElementById('descriptionPopupContainer').addEventListener('click', function(event) {
+    const descriptionPopupContainer = document.getElementById('descriptionPopupContainer');
+
+    // ポップアップコンテンツ以外をクリックした場合のみポップアップを閉じる
+    if (event.target === descriptionPopupContainer) {
+        descriptionPopupContainer.style.display = 'none';
+    }
+});
