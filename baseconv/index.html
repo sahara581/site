@@ -21,7 +21,7 @@
                         <option value="16">16進数</option>
                     </select>
 
-                    <button class="icon-btn pencil-icon">
+                    <button class="icon-btn pencil-icon" title="入力">
                         <i class="fas fa-pencil"></i>
                     </button>
                 </div>
@@ -48,12 +48,15 @@
             </div>
 
             <div class="center-icons">
-                <button id="SavedDatasButton" class="bigicon-btn data-btn" title="データ">
+                <button id="SavedDatasButton" class="bigicon-btn data-btn" title="保存済みデータ">
                     <i class="far fa-star"></i>
                 </button>
                 <a href="https://sahara581.github.io/site/services/index.html" class="bigicon-btn home-btn" title="ホーム">
                     <i class="fas fa-home"></i>
                 </a>
+                <button id="descriptionButton" class="bigicon-btn data-btn" title="ヘルプ">
+                    <i class="fas fa-question-circle"></i>
+                </button>
             </div> 
         </div>
 
@@ -92,6 +95,17 @@
             <div class="popup-content">
                 <h2>保存済データ</h2>
                 <div id="savedDataList" class="saved-data-list"></div>
+            </div>
+        </div>
+
+        <!-- 新しいポップアップウィンドウのコンテナ -->
+        <div id="descriptionPopupContainer" class="popup-container">
+            <div class="popup-content">
+                <h2>使い方</h2>
+                <div class="popup-text">
+                    <p>簡単に進数間での変換を行えるツールです。</p>
+                    <p>小数の変換も可能ですが精度を調節しているため、正確な値にならないことがあります。</p>
+                </div>
             </div>
         </div>
 
