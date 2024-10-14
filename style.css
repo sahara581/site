@@ -1,0 +1,229 @@
+/* 基本リセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;  /* 黒基調 */
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 200px;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+input[readonly] {
+    cursor: not-allowed;
+    background-color: #222;
+}
+
+select {
+    width: 200px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+input, select {
+    margin: 5px 0;
+}
+
+/* コピー ボタンのスタイル */
+.icon-btn {
+    background: none;
+    border: none;
+    color: #53aeff;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 10px;
+    font-size: 1.1rem; /* 少し小さく */
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.bigicon-btn {
+    background: none;
+    border: none;
+    color: #53aeff;
+    cursor: pointer;
+    padding: 0;
+    margin: 10px auto;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.icon-btn:hover {
+    color: goldenrod;  /* ホバー時に緑色に変化 */
+}
+
+.icon-btn:focus {
+    outline: none; /* フォーカス時のアウトラインを非表示 */
+}
+
+.icon-btn:active {
+    color: goldenrod;  /* クリック時にゴールドに変化 */
+}
+
+.rightButtons-div {
+    align-self: flex-end;
+}
+
+.pencil-icon {
+    align-self: flex-start;
+}
+
+.center-icons {
+    padding: 0 120px;
+    display: flex;
+}
+
+/* ポップアップウィンドウのスタイル */
+.popup-container {
+    display: none; /* 初期状態では非表示 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* 画面を暗くする */
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.popup-content {
+    background-color: #222;
+    color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 0 15px rgba(83, 174, 255, 0.5);
+    overflow-y: auto;  /* 長い内容があればスクロール */
+    max-height: 80vh; /* 画面の高さに合わせた最大サイズ */
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #53aeff; /* ポップアップの見出しはアクセントカラー */
+}
+
+.saved-data-list {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    /*white-space: pre-wrap; /* 長いデータを改行して表示 */
+    /*word-wrap: break-word; /* 単語の途中で改行する */
+}
+
+.saved-data-list div {
+    background-color: #333;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    /*white-space: pre-wrap; /* これによりテキストが改行されます */
+    word-wrap: break-word; /* 長すぎる単語が改行されるように */
+}
+
+.saved-data-list div span {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.delete-button {
+    background-color: #ff4c4c; /* 赤色 */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.delete-button:hover {
+    background-color: #ff2d2d;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: #53aeff;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.icon-btn:hover {
+    color: goldenrod;
+}
+
+.icon-btn:focus {
+    outline: none;
+}
+
+.icon-btn:active {
+    color: goldenrod;
+}
+
+/* コピー通知のスタイル */
+.copy-notification {
+}
+
+.common-popup-style {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
+    background-color: white; /* 半透明の黒 */
+    color: black;
+    font-weight: bold;
+    padding: 10px 20px;
+    font-size: 1rem;
+    display: none; /* 初期状態では非表示 */
+    z-index: 1000; /* 他の要素の上に表示 */
+    opacity: 0;
+    transition: opacity 0.5s ease; /* フェードイン・フェードアウト */
+}

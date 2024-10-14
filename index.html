@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>進数変換ツール</title>
+        <link rel="stylesheet" href="style.css">
+        <!-- Font AwesomeのCDNを追加 -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <div>
+            <div class="container">
+                <!-- 左側：入力セクション -->
+                <div class="section">
+                    <input id="inputValue" type="text" placeholder="入力値" oninput="convertNumber()" />
+                    <select id="inputBase" onchange="convertNumber()">
+                        <option value="2">2進数</option>
+                        <option value="8">8進数</option>
+                        <option value="10" selected>10進数</option>
+                        <option value="16">16進数</option>
+                    </select>
+
+                    <button class="icon-btn pencil-icon">
+                        <i class="fas fa-pencil"></i>
+                    </button>
+                </div>
+        
+                <!-- 右側：出力セクション -->
+                <div class="section">
+                    <input id="outputValue" type="text" readonly placeholder="変換結果" />
+                    <select id="outputBase" onchange="convertNumber()">
+                        <option value="2">2進数</option>
+                        <option value="8">8進数</option>
+                        <option value="10" selected>10進数</option>
+                        <option value="16">16進数</option>
+                    </select>
+
+                    <div class="rightButtons-div">
+                        <button id="saveButton" class="icon-btn save-btn" title="保存">
+                            <i class="fas fa-star"></i>
+                        </button>
+                        <button id="copyButton" class="icon-btn copy-btn" title="コピー">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="center-icons">
+                <button id="SavedDatasButton" class="bigicon-btn data-btn" title="データ">
+                    <i class="far fa-star"></i>
+                </button>
+                <a href="https://sahara581.github.io/site/services/index.html" class="bigicon-btn home-btn" title="ホーム">
+                    <i class="fas fa-home"></i>
+                </a>
+            </div> 
+        </div>
+
+        <!-- コピー成功通知用のポップアップ -->
+        <div id="copySuccessPopup" class="common-popup-style">
+            出力をコピーしました
+        </div>
+
+        <!-- コピー失敗通知用のポップアップ（空の出力フォーム用） -->
+        <div id="copyEmptyPopup" class="common-popup-style">
+            出力がありません
+        </div>
+
+        <!-- コピー失敗通知用のポップアップ（他の失敗の場合） -->
+        <div id="copyFailPopup" class="common-popup-style">
+            コピーに失敗しました
+        </div>
+
+        <!-- 保存完了通知用のポップアップ -->
+        <div id="saveSuccessPopup" class="common-popup-style">
+            保存しました
+        </div>
+
+        <!-- 空の項目がある場合のポップアップ -->
+        <div id="emptyFieldPopup" class="common-popup-style">
+            空の項目があります
+        </div>
+
+        <!-- 保存失敗時のポップアップ -->
+        <div id="saveErrorPopup" class="common-popup-style">
+            保存できませんでした
+        </div>
+
+        <!-- ポップアップウィンドウのコンテナ -->
+        <div id="popupContainer" class="popup-container">
+            <div class="popup-content">
+                <h2>保存済データ</h2>
+                <div id="savedDataList" class="saved-data-list"></div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+    
+</html>
