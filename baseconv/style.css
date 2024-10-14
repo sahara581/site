@@ -76,6 +76,18 @@ input, select {
     text-decoration: none;
 }
 
+.icon-btn:hover {
+    color: goldenrod;  /* ホバー時に緑色に変化 */
+}
+
+.icon-btn:focus {
+    outline: none; /* フォーカス時のアウトラインを非表示 */
+}
+
+.icon-btn:active {
+    color: goldenrod;  /* クリック時にゴールドに変化 */
+}
+
 .bigicon-btn {
     background: none;
     border: none;
@@ -88,16 +100,8 @@ input, select {
     text-decoration: none;
 }
 
-.icon-btn:hover {
-    color: goldenrod;  /* ホバー時に緑色に変化 */
-}
-
-.icon-btn:focus {
-    outline: none; /* フォーカス時のアウトラインを非表示 */
-}
-
-.icon-btn:active {
-    color: goldenrod;  /* クリック時にゴールドに変化 */
+.bigicon-btn:hover {
+    color: goldenrod;
 }
 
 .rightButtons-div {
@@ -206,10 +210,6 @@ h2 {
 
 .icon-btn:active {
     color: goldenrod;
-}
-
-/* コピー通知のスタイル */
-.copy-notification {
 }
 
 .common-popup-style {
