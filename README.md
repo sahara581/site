@@ -10,11 +10,6 @@ All files in this repository are provided under the MIT License. For more inform
 ## [Works](https://sahara581.github.io/site/services/index.html)
 [Here](https://sahara581.github.io/site/services/index.html) is a collection of links to my sites, games and other works.
 
-
-## [Calture Festival](https://sahara581.github.io/site/CF/CultureFestivalTopPage.html)
-This is a publicity and image posting site that I created for a school festival.
-It was not actually used at the festival, but I learned a lot about exchanging data with the server.
-
 ## [Platformer Game](https://sahara581.github.io/site/PlatformerGame/index.html)
 While I usually make games in Unity, I tried to see how well I could make games in HTML.
 I never thought I could make a good game, and in fact, I couldn't.
