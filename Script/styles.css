@@ -11,11 +11,14 @@ header {
     width: 100%;
     position: fixed;
     top: 0;
-    text-align: center;
     background-color: #007BFF; /* 国連ブルー */
     color: white;
     padding: 10px 0;
     margin: 0;
+}
+
+h2 {
+    text-align: center;
 }
 
 /* セクション全般 */
