@@ -7,7 +7,7 @@ The files in this repository are primarily for the creator's learning, play and 
 
 All files in this repository are provided under the MIT License. For more information about the license, [please click here](#chap-license).
 
-## Works
+## [Works](https://sahara581.github.io/site/services/index.html)
 [Here](https://sahara581.github.io/site/services/index.html) is a collection of links to my sites, games and other works.
 
 
