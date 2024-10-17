@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>発表原稿エディター</title>
+    <title>Script Editor</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="../ReSources/Images/fabicon/icon.ico">
@@ -16,30 +16,30 @@
         <button onclick="formatText('italic')">I</button>
         <button onclick="formatText('underline')">U</button>
         <input type="color" id="fontColor" onchange="changeColor(this.value)">
-        <button onclick="saveContent()">保存</button>
-        <button onclick="clearContent()">クリア</button>
+        <button onclick="saveContent()">Save</button>
+        <button onclick="clearContent()">Clear</button>
     </div>
 -->
 
     <header>
-        <h1>発表原稿エディター</h1>
+        <h1>Script Editor</h1>
     </header>
 
     <section id="presenter-registration">
-        <h2><i class="fas fa-users"></i> 発表者登録</h2>
+        <h2><i class="fas fa-users"></i> Presenter Registration</h2>
         <form>
-            <input type="text" id="presenter-name" placeholder="発表者名を入力">
+            <input type="text" id="presenter-name" placeholder="Enter Presenter's Name">
             <button type="button" id="add-presenter-btn"><i class="fas fa-add"></i></button>
         </form>
         <div id="presenter-list"></div>
     </section>
 
     <section id="draft-editor">
-        <h2><i class="fas fa-pencil"></i> 原稿入力</h2>
+        <h2><i class="fas fa-pencil"></i> Manuscript Entry</h2>
         <form>
-            <input type="text" id="section-title" placeholder="セクションタイトル">
-            <textarea id="section-content" placeholder="セクション内容"></textarea>
-            <button type="button" id="save-draft-btn"><i class="fas fa-save"></i></button>
+            <input type="text" id="section-title" placeholder="Section Title">
+            <textarea id="section-content" placeholder="Section Contents"></textarea>
+            <button type="button" id="save-draft-btn"><i class="fas fa-save"></i> Save</button>
         </form>
     </section>
 
@@ -53,17 +53,17 @@
 -->
 
     <section id="data-management">
-        <h2><i class="fas fa-file"></i> データ管理</h2>
-        <button id="export-json-btn"><i class="fas fa-upload"></i>データをJSONにエクスポート</button>
+        <h2><i class="fas fa-file"></i> Data Management</h2>
+        <button id="export-json-btn"><i class="fas fa-upload"></i> Export Data For JSON</button>
         <input type="file" id="import-json-btn" accept=".json" />
     </section>
 
 
     <section id="sections-list">
-        <h2><i class="fas fa-section"></i> セクション一覧</h2>
+        <h2><i class="fas fa-section"></i> Section List</h2>
     </section>
 
-    <div class="success-msg">リンクをクリップボードにコピーしました</div>
+    <div class="success-msg">Link copied to clipboard</div>
 
     <footer>
         <button><a href="https://sahara581.github.io/site/services/index.html"><i class="fas fa-home"></i></a></button>
@@ -76,13 +76,13 @@
     <script>
         $(function () {
             $('#copy-url').click(function () {
-                // data-urlの値を取得
+                // Get the value of 'data-url
                 const url = $(this).data('url');
 
-                // クリップボードにコピー
+                // Copy to clipboard
                 navigator.clipboard.writeText(url);
 
-                // フラッシュメッセージ表示
+                // Flash message display
                 $('.success-msg').fadeIn("slow", function () {
                     $(this).delay(2000).fadeOut("slow");
                 });
