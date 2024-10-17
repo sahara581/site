@@ -1,4 +1,4 @@
-/* 全体のスタイル */
+/* Overall Style */
 body {
     font-family: 'Arial',YuGothic,'Yu Gothic',sans-serif;
     margin: 0;
@@ -11,7 +11,7 @@ header {
     width: 100%;
     position: fixed;
     top: 0;
-    background-color: #007BFF; /* 国連ブルー */
+    background-color: #007BFF;
     padding: 0;
     margin: 0;
     text-align: center;
@@ -23,7 +23,7 @@ h1{
     margin: 0;
 }
 
-/* セクション全般 */
+/* Section General */
 section {
     margin: 20px auto;
     padding: 20px;
@@ -33,7 +33,7 @@ section {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* 発表者登録エリア */
+/* Presenter Registration Area */
 #presenter-registration form {
     display: flex;
     gap: 10px;
@@ -49,7 +49,7 @@ section {
 }
 
 #add-presenter-btn {
-    background-color: #007BFF; /* タイトルの背景色と同じ */
+    background-color: #007BFF;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -62,7 +62,7 @@ section {
     background-color: #000000;
 }
 
-/* 発表者のバツボタン */
+/* Presenter's X button */
 .presenter-item {
     display: inline-block;
     margin: 5px;
@@ -84,7 +84,7 @@ section {
     background-color: #000000;
 }
 
-/* 原稿入力エリア */
+/* Manuscript input area */
 #draft-editor form {
     display: flex;
     flex-direction: column;
@@ -97,7 +97,7 @@ section {
 }
 
 #save-draft-btn {
-    background-color: #007BFF; /* タイトルの背景色と同じ */
+    background-color: #007BFF;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -110,9 +110,9 @@ section {
     background-color: #000000;
 }
 
-/* データ管理セクション */
+/* Data Management Area */
 #save-json-btn {
-    background-color: #007BFF; /* タイトルの背景色と同じ */
+    background-color: #007BFF;
     color: white;
     padding: 10px 20px;
     margin: 5px;
@@ -121,7 +121,7 @@ section {
     cursor: pointer;
 }
 #load-json-file {
-    background-color: #007BFF; /* タイトルの背景色と同じ */
+    background-color: #007BFF;
     color: white;
     padding: 7px 20px;
     margin: 5px;
@@ -130,7 +130,7 @@ section {
     cursor: pointer;
 }
 #load-json-btn {
-    background-color: #007BFF; /* タイトルの背景色と同じ */
+    background-color: #007BFF;
     color: white;
     padding: 10px 20px;
     margin: 5px;
@@ -140,7 +140,7 @@ section {
 }
 
 
-/* 各セクション */
+/* various sections */
 #sections-list {
     display: flex;
     flex-direction: column;
@@ -155,7 +155,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    cursor: grab; /* ドラッグ可能なカーソル */
+    cursor: grab; /* Draggable cursor */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -170,22 +170,22 @@ section {
 }
 
 .section-item-contents {
-    overflow-wrap: break-word; /* 長い単語やURLの自動改行 */
+    overflow-wrap: break-word; /* Automatic line break for long words */
 }
 
-/* ドラッグ中のスタイル */
+/* Style in drag */
 .section-item.dragging {
     opacity: 0.1;
-    cursor: grabbing; /* ドラッグ中のカーソル */
+    cursor: grabbing; /* Cursor while dragging */
 }
 
-/* ドラッグ可能なエリアの限定 */
+/* Limitations of draggable area */
 .section-item > * {
-    cursor: default; /* 文字選択のカーソル */
-    user-select: none; /* 文字選択を防ぐ */
+    cursor: default; /* Character selection cursor */
+    user-select: none; /* Prevent character selection */
 }
 
-/* セクションのボタン */
+/* Section Buttons */
 .section-item .edit-btn,
 .section-item .delete-btn {
     border: none;
@@ -210,7 +210,7 @@ section {
     background-color: red;
 }
 
-/* プルダウンメニュー */
+/* pulldown menu */
 .section-item .presenter-select {
     padding: 5px;
     border-radius: 4px;
@@ -221,11 +221,11 @@ footer {
     background-color: #007bff;
     color: white;
     text-align: center;
-    padding: 20px 0; /* 上下のパディングを少し増やしました */
+    padding: 20px 0;
     width: 100%;
     display: flex;
-    justify-content: center; /* ボタンを中央に配置 */
-    gap: 20px; /* ボタン同士の間隔を追加 */
+    justify-content: center; /* Centered buttons */
+    gap: 20px; /* Add spacing between buttons */
 }
 
 footer button {
@@ -248,7 +248,7 @@ footer button a i {
 }
 
 footer button:hover {
-    background-color: #003f7f; /* ボタンにホバー時の色変化 */
+    background-color: #003f7f; /* Color change when hovering over a button */
     color: white;
 }
 
