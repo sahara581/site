@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const presenterInput = document.getElementById('presenter-name');
     const presenterList = document.getElementById('presenter-list');
     const sectionsList = document.getElementById('sections-list');
-    let editingIndex = null;  // 編集中のセクションのインデックスを保持
+    let editingIndex = null;  // Keeps an index of the section being edited
 
     loadPresenters();
     loadSections();
@@ -26,20 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (title && content) {
             if (editingIndex !== null) {
-                // 編集モードの場合
+                // In edit mode
                 updateSection(editingIndex, title, content, presenter);
             } else {
-                // 新規作成モードの場合
+                // In new creation mode
                 addSection(title, content, presenter);
             }
             saveSections();
             document.getElementById('section-title').value = '';
             document.getElementById('section-content').value = '';
-            editingIndex = null; // 編集モード解除
+            editingIndex = null; // Edit mode release
         }
     });
 
-    // JSONエクスポート機能の追加
+    // JSON export function
     const exportButton = document.getElementById('export-json-btn');
     exportButton.addEventListener('click', () => {
         const data = {
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         URL.revokeObjectURL(url);
     });
 
-    // JSONインポート機能の追加
+    // JSON inport function
     const importButton = document.getElementById('import-json-btn');
     importButton.addEventListener('change', (event) => {
         const file = event.target.files[0];
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         sectionsList.appendChild(sectionItem);
 
-        // ドラッグアンドドロップのイベントリスナーを追加
+        // Drag-and-drop event listener
         sectionItem.addEventListener('dragstart', (e) => {
             e.dataTransfer.setData('text/plain', sectionItem.innerHTML);
             sectionItem.classList.add('dragging');
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function saveSections() {
         const sections = Array.from(sectionsList.querySelectorAll('.section-item')).map(section => {
             const title = section.querySelector('strong').textContent.trim();
-            const content = section.querySelector('p').innerHTML.trim(); // innerHTMLで改行を含めて取得
+            const content = section.querySelector('p').innerHTML.trim(); // Get including line breaks in innerHTML
             const presenter = section.querySelector('.presenter-select').value;
             return { title, content, presenter };
         });
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         savedSections.forEach(section => addSection(section.title, section.content, section.presenter));
     }
 
-    // セクションリストのドラッグアンドドロップのイベントリスナー
+    // Drag-and-drop event listener for section list
     sectionsList.addEventListener('dragover', (e) => {
         e.preventDefault();
         const draggingItem = document.querySelector('.dragging');
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.stopPropagation();
         const draggingItem = document.querySelector('.dragging');
         sectionsList.appendChild(draggingItem);
-        saveSections();  // ドロップ後に保存
+        saveSections();  // Save after drop
     });
 
     function getDragAfterElement(container, y) {
@@ -207,10 +207,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.editSection = function (button) {
         const sectionItem = button.parentElement;
         const sectionItems = Array.from(sectionsList.querySelectorAll('.section-item'));
-        editingIndex = sectionItems.indexOf(sectionItem);  // 編集するセクションのインデックスを取得
+        editingIndex = sectionItems.indexOf(sectionItem);  // Get the index of the section to be edited
         const title = sectionItem.querySelector('strong').textContent;
         const content = sectionItem.querySelector('p').innerHTML;
         document.getElementById('section-title').value = title;
-        document.getElementById('section-content').value = content.replace(/<br>/g, '\n'); // <br>を改行文字に戻す
+        document.getElementById('section-content').value = content.replace(/<br>/g, '\n'); // Return <br> to newline character.
     }
 });
