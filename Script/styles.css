@@ -12,13 +12,15 @@ header {
     position: fixed;
     top: 0;
     background-color: #007BFF; /* 国連ブルー */
-    color: white;
-    padding: 10px 0;
+    padding: 0;
     margin: 0;
 }
 
 h2 {
     text-align: center;
+    color: white;
+    padding: 10px 0;
+    margin: 0;
 }
 
 /* セクション全般 */
