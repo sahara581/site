@@ -232,9 +232,9 @@ function updateClock() {
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
-    const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const dayOfWeek = dayNames[now.getDay()];
-    const dateString = `${year}/${month}/${day} (${dayOfWeek})`;
+    const dateString = `${month}-${day}-${year} (${dayOfWeek}.)`;
     document.getElementById('current-date').textContent = dateString;
 }
 
