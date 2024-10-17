@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Works</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="icon" href="../ReSources/Images/fabicon/icon.ico">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Workd</h1>
+            <ul class="site-list">
+    
+                <li class="site-item">
+                        <div class="site-title"><a href="https://sahara581.github.io/site/en/script/index.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-pencil"></i> Script Editor</a></div>
+                        <p class="site-description">An editor tool that supports the creation and printing of presentation manuscripts.</p>
+                        <button class="copy-url" data-url="https://sahara581.github.io/site/en/script/index.html"><i class="fas fa-clipboard"></i></button>
+                </li>
+    
+                <li class="site-item">
+                    <div class="site-title"><a href="https://sahara581.github.io/site/en/timer/index.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-clock"></i> Stopwatch / Timer / Digital clock</a></div>
+                    <p class="site-description">The simplest and easiest to use timer to help you manage your time.</p>
+                    <button class="copy-url" data-url="https://sahara581.github.io/site/en/timer/index.html"><i class="fas fa-clipboard"></i></button>
+                </li>
+    
+    <!--
+                <li class="site-item">
+                    <div class="site-title"><a href="https://sahara581.github.io/site/baseconv/index.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-calculator"></i> Radix Converter</a></div>
+                    <p class="site-description">The most stylish and easy to use decimal conversion tool. Just plain cool!</p>
+                    <button class="copy-url" data-url="https://sahara581.github.io/site/baseconv/index.html"><i class="fas fa-clipboard"></i></button>
+                </li>
+    -->
+    
+                <li class="site-item">
+                    <div class="site-title"><a href="https://sahara581.github.io/site/PlatformerGame/index.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> 2D Platformer</a></div>
+                    <p class="site-description"> This is the supreme god damn game! Play “2D Platformer” now!</p>
+                    <button class="copy-url" data-url="https://sahara581.github.io/site/PlatformerGame/index.html"><i class="fas fa-clipboard"></i></button>
+                </li>
+
+<!--
+                <li class="site-item">
+                    <div class="site-title"><a href="https://unityroom.com/games/hyperion" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> HYPERION</a></div>
+                    <p class="site-description">The most popular mobile mini-game. Go higher than anyone else!  *External site in Japan</p>
+                    <button class="copy-url" data-url="https://unityroom.com/games/hyperion"><i class="fas fa-clipboard"></i></button>
+                </li>
+    
+                <li class="site-item">
+                    <div class="site-title"><a href="https://unityroom.com/games/charonsobol" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> CHARON'S OBOL</a></div>
+                    <p class="site-description">2D action game for PC. Go Go Go!  *External site in Japan</p>
+                    <button class="copy-url" data-url="https://unityroom.com/games/charonsobol"><i class="fas fa-clipboard"></i></button>
+                </li>
+    
+                <li class="site-item">
+                    <div class="site-title"><a href="https://unityroom.com/games/wam" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> WHAC A MOL -On The CUBE-</a></div>
+                    <p class="site-description">New sensation! Whack-a-mole for uniqueness!  *External site in Japan</p>
+                    <button class="copy-url" data-url="https://unityroom.com/games/wam"><i class="fas fa-clipboard"></i></button>
+                </li>
+    
+                <li class="site-item">
+                    <div class="site-title"><a href="https://unityroom.com/games/up-down_rocket" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> UP-DOWN-CLASH！</a></div>
+                    <p class="site-description">Side-scrolling action for mobile. Permanent advance, everywhere!  *External site in Japan</p>
+                    <button class="copy-url" data-url="https://unityroom.com/games/up-down_rocket"><i class="fas fa-clipboard"></i></button>
+                </li>
+    
+                <li class="site-item">
+                    <div class="site-title"><a href="https://unityroom.com/games/chollima" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> CHOLLIMA</a></div>
+                    <p class="site-description">Karting game for mobile. As fast as possible!  *External site in Japan</p>
+                    <button class="copy-url" data-url="https://unityroom.com/games/chollima"><i class="fas fa-clipboard"></i></button>
+                </li>
+-->
+    
+                <!-- Additional sites can be added here -->
+            </ul>
+        </div>
+    
+        <div class="success-msg">Link copied to clipboard</div>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.13/clipboard.min.js"></script>
+        <script>
+            $(function () {
+                $('.copy-url').click(function () {
+                    // Get the value of 'data-url
+                    const url = $(this).data('url');
+    
+                    // Copy to clipboard
+                    navigator.clipboard.writeText(url);
+    
+                    // Flash message display
+                    $('.success-msg').fadeIn("slow", function () {
+                        $(this).delay(2000).fadeOut("slow");
+                    });
+                });
+            });
+        </script>
+    </body>
+    </html>
+
+
+<!--
+
+
+            <li class="site-item">
+                <div class="site-title"><a href="--------------------" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> ----------</a></div>
+                <p class="site-description">--------------------</p>
+                <button class="copy-url" data-url="--------------------"><i class="fas fa-clipboard"></i></button>
+            </li>
+-->

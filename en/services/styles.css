@@ -1,0 +1,107 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    overflow: auto;
+}
+
+.container {
+    background-color: white;
+    width: 80%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 20px 0; /* 十分な上下の余白を確保 */
+    z-index: 1000;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px; /* 下の要素が見出しに重ならないように余白を追加 */
+}
+
+.site-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0; /* 追加の余白をなくす */
+}
+
+.site-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.site-item:last-child {
+    border-bottom: none;
+}
+
+.site-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+}
+
+.site-title a {
+    text-decoration: none;
+    color: #555;
+}
+
+.site-title a i {
+    color: gray;
+}
+
+.site-description {
+    font-size: 14px;
+    color: #888;
+}
+
+.copy-url {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.copy-url:hover {
+    background-color: #0056b3;
+}
+
+.success-msg {
+    display: none;
+    position: fixed;
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #29aba4;
+    color: #fff;
+    top: 200px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .site-description, .site-title a i {
+        display: none;
+    }
+}
