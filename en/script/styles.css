@@ -6,19 +6,10 @@ body {
     background-color: #f4f4f4;
 }
 
-header {
-    display: flex;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    background-color: #007BFF;
-    padding: 0;
-    margin: 0;
+h1 {
     text-align: center;
-}
-
-h1{
     color: white;
+    background-color: #007BFF;
     padding: 10px 0;
     margin: 0;
 }
