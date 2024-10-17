@@ -9,6 +9,7 @@ body {
 h2 {
     text-align: center;
     color: white;
+    background-color: #007BFF;
     padding: 10px 0;
     margin: 0;
 }
