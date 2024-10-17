@@ -1,0 +1,296 @@
+/* 全体のスタイル */
+body {
+    font-family: 'Arial',YuGothic,'Yu Gothic',sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: #007BFF; /* 国連ブルー */
+    padding: 0;
+    margin: 0;
+}
+
+h2 {
+    text-align: center;
+    color: white;
+    padding: 10px 0;
+    margin: 0;
+}
+
+/* セクション全般 */
+section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 発表者登録エリア */
+#presenter-registration form {
+    display: flex;
+    gap: 10px;
+}
+
+#presenter-registration input {
+    flex: 1;
+    padding: 10px;
+}
+
+#presenter-registration button {
+    padding: 10px 20px;
+}
+
+#add-presenter-btn {
+    background-color: #007BFF; /* タイトルの背景色と同じ */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+#add-presenter-btn:hover{
+    background-color: #000000;
+}
+
+/* 発表者のバツボタン */
+.presenter-item {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+}
+
+.presenter-item .delete-btn {
+    color: red;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: .4s;
+    margin: 0px 0px 0px 10px;
+}
+
+.presenter-item .delete-btn:hover{
+    background-color: #000000;
+}
+
+/* 原稿入力エリア */
+#draft-editor form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#draft-editor input,
+#draft-editor textarea {
+    padding: 10px;
+}
+
+#save-draft-btn {
+    background-color: #007BFF; /* タイトルの背景色と同じ */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+#save-draft-btn:hover {
+    background-color: #000000;
+}
+
+/* データ管理セクション */
+#save-json-btn {
+    background-color: #007BFF; /* タイトルの背景色と同じ */
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#load-json-file {
+    background-color: #007BFF; /* タイトルの背景色と同じ */
+    color: white;
+    padding: 7px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#load-json-btn {
+    background-color: #007BFF; /* タイトルの背景色と同じ */
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+/* 各セクション */
+#sections-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.section-item {
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: grab; /* ドラッグ可能なカーソル */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.section-item-title {
+    color: black;
+    font-size: 20px;
+}
+
+.section-item-presenter {
+    color: black;
+    font-style: oblique;
+}
+
+.section-item-contents {
+    overflow-wrap: break-word; /* 長い単語やURLの自動改行 */
+}
+
+/* ドラッグ中のスタイル */
+.section-item.dragging {
+    opacity: 0.1;
+    cursor: grabbing; /* ドラッグ中のカーソル */
+}
+
+/* ドラッグ可能なエリアの限定 */
+.section-item > * {
+    cursor: default; /* 文字選択のカーソル */
+    user-select: none; /* 文字選択を防ぐ */
+}
+
+/* セクションのボタン */
+.section-item .edit-btn,
+.section-item .delete-btn {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    transition: .4s;
+}
+
+.section-item .edit-btn:hover,
+.section-item .delete-btn:hover {
+    background-color: #000000;
+    color: red;
+}
+
+.section-item .edit-btn {
+    background-color: orange;
+}
+
+.section-item .delete-btn {
+    background-color: red;
+}
+
+/* プルダウンメニュー */
+.section-item .presenter-select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+footer {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 20px 0; /* 上下のパディングを少し増やしました */
+    width: 100%;
+    display: flex;
+    justify-content: center; /* ボタンを中央に配置 */
+    gap: 20px; /* ボタン同士の間隔を追加 */
+}
+
+footer button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+footer button a {
+    color: white;
+}
+
+footer button a i {
+    color: white;
+}
+
+footer button:hover {
+    background-color: #003f7f; /* ボタンにホバー時の色変化 */
+    color: white;
+}
+
+.success-msg {
+    display: none;
+    position: fixed;
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #29aba4;
+    color: #fff;
+    top: 100px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    border-radius: 5px;
+}
+
+@media print {
+    button {
+        display: none;
+    }
+    input {
+        display: none;
+    }
+    h1 {
+        display: none;
+    }
+    h2 {
+        display: none;
+    }
+    select {
+        display: none;
+    }
+    #draft-editor {
+        display: none;
+    }
+    #presenter-registration {
+        display: none;
+    }
+    footer {
+        display: none;
+    }
+}
