@@ -234,7 +234,7 @@ function updateClock() {
     const day = String(now.getDate()).padStart(2, '0');
     const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const dayOfWeek = dayNames[now.getDay()];
-    const dateString = `${month}-${day}-${year} ${dayOfWeek}.`;
+    const dateString = `${dayOfWeek}.  ${month}.${day}.${year}`;
     document.getElementById('current-date').textContent = dateString;
 }
 
