@@ -226,7 +226,7 @@ function updateClock() {
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
-    const timeString = `${hours}:${minutes}:${seconds}`;
+    const timeString = `${hours}:${minutes}.${seconds}`;
     document.getElementById('current-time').textContent = timeString;
 
     const year = now.getFullYear();
@@ -234,7 +234,7 @@ function updateClock() {
     const day = String(now.getDate()).padStart(2, '0');
     const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const dayOfWeek = dayNames[now.getDay()];
-    const dateString = `${month}-${day}-${year} (${dayOfWeek}.)`;
+    const dateString = `${month}-${day}-${year} ${dayOfWeek}.`;
     document.getElementById('current-date').textContent = dateString;
 }
 
