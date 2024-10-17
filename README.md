@@ -7,6 +7,10 @@ The files in this repository are primarily for the creator's learning, play and 
 
 All files in this repository are provided under the MIT License. For more information about the license, [please click here](#chap-license).
 
+### Works
+[Here](https://sahara581.github.io/site/services/index.html) is a collection of links to my sites, games and other works.
+
+
 ## [Calture Festival](https://sahara581.github.io/site/CF/CultureFestivalTopPage.html)
 This is a publicity and image posting site that I created for a school festival.
 It was not actually used at the festival, but I learned a lot about exchanging data with the server.
@@ -51,6 +55,3 @@ When printing, the input form and buttons for each section are hidden to complet
 ## License
 MIT LICENSE
 [LICENSE.md](../main/LICENSE)
-
-## Works
-[Services](https://sahara581.github.io/site/services/index.html)
