@@ -150,7 +150,7 @@ h2 {
     color: #53aeff; /* ポップアップの見出しはアクセントカラー */
 }
 
-.popup-text a {
+.popup-text p a {
     text-decoration: none;
     color: white;
 }
