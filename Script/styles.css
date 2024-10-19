@@ -243,6 +243,16 @@ footer button:hover {
     color: white;
 }
 
+footer p {
+    margin: auto 0;
+    font-weight: 500;
+}
+
+footer p a {
+    text-decoration: none;
+    color: white;
+}
+
 .success-msg {
     display: none;
     position: fixed;
