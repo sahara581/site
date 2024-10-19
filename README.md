@@ -7,10 +7,10 @@ The files in this repository are primarily for the creator's learning, play and 
 
 All files in this repository are provided under the MIT License. For more information about the license, [please click here](#chap-license).
 
-## [Works](https://sahara581.github.io/site/services/index.html)
+## [Works](https://sahara581.github.io/site/en/services/index.html)
 [Here](https://sahara581.github.io/site/services/index.html) is a collection of links to my sites, games and other works.
 
-## [Platformer Game](https://sahara581.github.io/site/PlatformerGame/index.html)
+## [Platformer Game](https://sahara581.github.io/site/en/PlatformerGame/index.html)
 While I usually make games in Unity, I tried to see how well I could make games in HTML.
 I never thought I could make a good game, and in fact, I couldn't.
 Instead, with the support of my friends, I succeeded in making the worst game I had ever made.
