@@ -150,6 +150,15 @@ h2 {
     color: #53aeff; /* ポップアップの見出しはアクセントカラー */
 }
 
+.popup-text {
+    margin-bottom: 40px;
+}
+
+.popup-content p a {
+    text-decoration: none;
+    color: #53aeff;
+}
+
 .gpt-link {
     text-decoration: none;
     color: #53aeff;

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Base Converter</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="icon" href="../ReSources/Images/fabicon/icon.ico">
+    </head>
+    <body>
+        <div>
+            <div class="container">
+                <!-- Left Side: Input Section -->
+                <div class="section">
+                    <input id="inputValue" type="text" placeholder="Input" oninput="convertNumber()" />
+                    <select id="inputBase" onchange="convertNumber()">
+                        <option value="2">Binary (2)</option>
+                        <option value="8">Octal (8)</option>
+                        <option value="10" selected>Decimal (10)</option>
+                        <option value="16">Hexadecimal (16)</option>
+                    </select>
+
+                    <button class="icon-btn pencil-icon" title="Input">
+                        <i class="fas fa-pencil"></i>
+                    </button>
+                </div>
+        
+                <!-- Right Side: Output Section -->
+                <div class="section">
+                    <input id="outputValue" type="text" readonly placeholder="Result" />
+                    <select id="outputBase" onchange="convertNumber()">
+                        <option value="2">Binary (2)</option>
+                        <option value="8">Octal (8)</option>
+                        <option value="10" selected>Decimal (10)</option>
+                        <option value="16">Hexadecimal (16)</option>
+                    </select>
+
+                    <div class="rightButtons-div">
+                        <button id="saveButton" class="icon-btn save-btn" title="Save">
+                            <i class="fas fa-star"></i>
+                        </button>
+                        <button id="copyButton" class="icon-btn copy-btn" title="Copy">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="center-icons">
+                <button id="SavedDatasButton" class="bigicon-btn data-btn" title="Saved Data">
+                    <i class="far fa-star"></i>
+                </button>
+                <a href="https://sahara581.github.io/site/services/index.html" class="bigicon-btn home-btn" title="Home">
+                    <i class="fas fa-home"></i>
+                </a>
+                <button id="descriptionButton" class="bigicon-btn data-btn" title="Help">
+                    <i class="fas fa-question-circle"></i>
+                </button>
+            </div> 
+        </div>
+
+        <!-- Popup for copy success notification -->
+        <div id="copySuccessPopup" class="common-popup-style">
+            Successfully copied the output
+        </div>
+
+        <!-- Popup for copy failure notification (for empty output form) -->
+        <div id="copyEmptyPopup" class="common-popup-style">
+            There is no output
+        </div>
+
+        <!-- Popup for copy failure notification (for other failures) -->
+        <div id="copyFailPopup" class="common-popup-style">
+            Failed to copy
+        </div>
+
+        <!-- Popup for save success notification -->
+        <div id="saveSuccessPopup" class="common-popup-style">
+            Saved successfully
+        </div>
+
+        <!-- Popup for empty fields -->
+        <div id="emptyFieldPopup" class="common-popup-style">
+            There are empty fields
+        </div>
+
+        <!-- Popup for save failure notification -->
+        <div id="saveErrorPopup" class="common-popup-style">
+            Failed to save
+        </div>
+
+        <!-- Popup window container -->
+        <div id="popupContainer" class="popup-container">
+            <div class="popup-content">
+                <h2>Saved Data</h2>
+                <div id="savedDataList" class="saved-data-list"></div>
+            </div>
+        </div>
+
+        <!-- New popup window container -->
+        <div id="descriptionPopupContainer" class="popup-container">
+            <div class="popup-content">
+                <h2>How to Use</h2>
+                <div class="popup-text">
+                    <p>This is a tool that allows easy conversion between number bases.</p>
+                    <p>It is possible to convert fractions, but due to precision adjustments, the values may not be accurate.</p>
+                </div>
+                <h2>CREDITS</h2>
+                <div class="popup-text">
+                    <p>This website utilizes OpenAI's <a class="gpt-link" href="https://chatgpt.com" target="_blank">ChatGPT</a> for content creation.</p>
+                </div>
+                <p><a href="https://sahara581.github.io/site/baseconv/index.html">日本語版</a></p>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
