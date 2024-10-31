@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テスト管理ページ</title>
+    <link rel="stylesheet" href="blanks-manager.css">
+    <link rel="icon" href="../../resources/favicons/common.ico">
+</head>
+<body>
+    <header>
+        <h1>テスト管理</h1>
+    </header>
+
+    <div class="container">
+        <h2>新規テスト作成</h2>
+        <form id="createTestForm">
+            <input type="text" id="testId" placeholder="ID（16桁のランダム文字列）">
+            <input type="text" id="testName" placeholder="テスト名">
+            <button type="button" onclick="createNewTest()">作成</button>
+        </form>
+
+        <h2>保存されたテスト一覧</h2>
+        <ul id="testList"></ul>
+    </div>
+
+    <div class="success-msg">リンクをクリップボードにコピーしました</div>
+
+    <div id="credits-popup" class="popup">
+        <div class="popup-content">
+            <span id="close-popup">×</span>
+            <h4>CREDITS</h4>
+            <p>OpenAI様の<a class="gpt-link" href="https://chatgpt.com" target="_blank">ChatGPT</a>を利用しています。</p>
+            <small>投稿：2024/11.01</small>
+            <small>最終更新：</small>
+        </div>
+    </div>
+
+    <footer>
+        <button><a href="https://saharaforge.com"><i class="fas fa-home"></i></a></button>
+        <button id="copy-url" data-url="https://saharaforge.com/tools/blanks"><i class="fas fa-clipboard"></i></button>
+        <button id="credits-btn"><i class="fas fa-file"></i></button>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.13/clipboard.min.js"></script>
+    <script src="blanks-manager.js"></script>
+    <script>
+        $(function () {
+            $('#copy-url').click(function () {
+                // data-urlの値を取得
+                const url = $(this).data('url');
+
+                // クリップボードにコピー
+                navigator.clipboard.writeText(url);
+
+                // フラッシュメッセージ表示
+                $('.success-msg').fadeIn("slow", function () {
+                    $(this).delay(2000).fadeOut("slow");
+                });
+            });
+        });
+    </script>
+</body>
+</html>

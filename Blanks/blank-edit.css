@@ -1,0 +1,220 @@
+/* 基本レイアウト */
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #222; /* 背景を黒に */
+    color: #fff; /* 文字を白に */
+}
+
+header {
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+header h1{
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+header h4 {
+    margin: auto;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    width: 80%;
+    margin: 0 auto 10px;
+    background-color: black;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.inputfield-head {
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+    display: block;
+}
+
+#questionInput {
+    resize: vertical;
+    width: 100%;
+    min-height: 300px;
+    margin-bottom: 10px;
+    background-color: #333; /* テキストエリア背景 */
+    color: #fff; /* テキスト色 */
+    border: 1px solid #666; /* 境界線色 */
+}
+
+.container button {
+    background-color: #444; /* ボタン背景 */
+    color: #fff; /* ボタンテキスト */
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s
+}
+
+button:hover {
+    background-color: #003f7f; /* ホバー時のボタン背景 */
+}
+
+#answerList {
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+    display: block;
+}
+
+#answers li {
+    list-style: none;
+    margin: 1px 0;
+}
+
+#answers li button {
+    width: auto;
+    right: 0;
+}
+
+.data-manager {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.data-manager h2 {
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+    display: block;
+}
+
+.data-manager button {
+    width: auto;
+    height: auto;
+}
+
+#preview {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+#preview h2 {
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+    display: block;
+}
+
+.success-msg {
+    display: none;
+    position: fixed;
+    width: fit-content;
+    height: 40px;
+    line-height: 40px;
+    background-color: /*#29aba4*/ #0057b3cc;
+    color: #fff;
+    top: 100px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(8, 8, 8, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.popup-content p {
+    margin-bottom: 20px; /* 段落の間に適度な余白を設定 */
+}
+
+#credits-popup .popup-content p:last-of-type {
+    margin-bottom: 30px; /* 最後の段落だけに多めの余白を追加 */
+}
+
+#credits-popup .popup-content small {
+    display: block;
+    margin-top: 20px; /* small要素の前に余白を追加 */
+}
+
+.popup-content p a {
+    text-decoration: none;
+    color: #3ea6ff;
+}
+
+.popup-content h4 {
+    margin-top: 5px;
+}
+
+#close-popup {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer button {
+    background-color: #222;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+footer button a{
+    color: white;
+}
+
+@media print {
+    /* 印刷専用のスタイル: 不要な要素を非表示 */
+    #preview {
+        display: block; /* プレビューを表示 */
+    }
+    #previewContent {
+        color: white; /* プレビュー内容は白 */
+        background-color: black; /* 背景は黒 */
+    }
+    #answerList {
+        display: block; /* 正解リストを印刷 */
+        color: white; /* 白文字 */
+    }
+    h1, h2, button, textarea {
+        display: none; /* タイトル、ボタン、入力フィールドを非表示 */
+    }
+}

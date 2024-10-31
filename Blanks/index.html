@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blanks - 穴埋めテスト作成 | saharaforge</title>
+    <link rel="stylesheet" href="blank-edit.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="../../resources/favicons/common.ico">
+</head>
+<body>
+    <header>
+        <h4>穴埋めテスト作成</h4>
+        <h1 id="testTitle">Blanks</h1>
+    </header>
+
+    <div class="container">        
+        <!-- 入力フィールド -->
+         <h2 class="inputfield-head"><i class="fas fa-pen"></i> 入力</h2>
+        <textarea id="questionInput" placeholder="問題文を入力し、空欄にしたい単語を選択してください"></textarea>
+        <button onclick="addBlank()">空欄にする　-　<small>Ctrl+Shift+B</small></button>
+        
+        <!-- 正解リストのサイドバー -->
+        <aside id="answerList">
+            <h2><i class="fas fa-list-ul"></i> 正解リスト</h2>
+            <ul id="answers"></ul>
+        </aside>
+
+        <div class="data-manager">
+            <h2><i class="far fa-file"></i> データ管理</h2>
+            <button onclick="exportToJson()"><i class="fas fa-file-export"></i> JSONとして書き出し</button>
+            <input type="file" id="importFile" accept=".json" onchange="importFromJson(event)">
+        </div>
+        
+        <!-- プレビューエリア -->
+        <div id="preview">
+            <h2><i class="fas fa-eye"></i> プレビュー</h2>
+            <div id="previewContent"></div>
+        </div>
+        
+        <!-- 印刷ボタン -->
+        <button onclick="window.print()"><i class="fas fa-print"></i> 印刷</button>
+    </div>
+
+    <div class="success-msg">リンクをクリップボードにコピーしました</div>
+
+    <div id="credits-popup" class="popup">
+        <div class="popup-content">
+            <span id="close-popup">×</span>
+            <h4>CREDITS</h4>
+            <p>OpenAI様の<a class="gpt-link" href="https://chatgpt.com" target="_blank">ChatGPT</a>を利用しています。</p>
+            <small>投稿：2024/11.01</small>
+            <small>最終更新：</small>
+        </div>
+    </div>
+
+    <footer>
+        <button><a href="https://saharaforge.com"><i class="fas fa-home"></i></a></button>
+        <button id="credits-btn"><i class="fas fa-file"></i></button>
+    </footer>
+    
+    <script src="blank-edit.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.13/clipboard.min.js"></script>
+    <script>
+        $(function () {
+            $('#copy-url').click(function () {
+                // data-urlの値を取得
+                const url = $(this).data('url');
+
+                // クリップボードにコピー
+                navigator.clipboard.writeText(url);
+
+                // フラッシュメッセージ表示
+                $('.success-msg').fadeIn("slow", function () {
+                    $(this).delay(2000).fadeOut("slow");
+                });
+            });
+        });
+
+        // URLパラメータからテストIDを取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const testId = urlParams.get("id");
+
+        // データを localStorage に保存する関数（ID別に保存）
+        function saveData() {
+            const questionInput = document.getElementById("questionInput").value;
+            const data = {
+                question: questionInput,
+                answers: answers
+            };
+            localStorage.setItem(`testData_${testId}`, JSON.stringify(data));
+        }
+
+        // データを localStorage から読み込む関数（ID別に読み込み）
+        function loadData() {
+            const savedData = localStorage.getItem(`testData_${testId}`);
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                document.getElementById("questionInput").value = data.question;
+                answers.length = 0; // 既存の回答リストをクリア
+                answers.push(...data.answers); // 新しいデータを追加
+                updateAnswerList();
+                updatePreview(data.question);
+            }
+        }
+
+        // テスト名を表示する関数
+        function loadTestTitle() {
+            const testData = JSON.parse(localStorage.getItem(`test_${testId}`));
+            if (testData && testData.name) {
+                document.getElementById("testTitle").textContent = testData.name;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadData);
+        document.addEventListener("DOMContentLoaded", loadTestTitle);
+    </script>
+</body>
+</html>
