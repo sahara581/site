@@ -58,7 +58,6 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-/*
 // データを localStorage に保存する関数
 function saveData() {
     const questionInput = document.getElementById("questionInput").value;
@@ -84,7 +83,6 @@ function loadData() {
         updateAnswerList();
     }
 }
-*/
 
 // 削除ボタンが押された時の処理
 function removeAnswer(index) {
